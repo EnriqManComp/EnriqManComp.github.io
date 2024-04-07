@@ -1,2 +1,5 @@
 title: Enrique Companioni Blog
 theme: minima
+header_pages:
+  - about-me.md
+  
