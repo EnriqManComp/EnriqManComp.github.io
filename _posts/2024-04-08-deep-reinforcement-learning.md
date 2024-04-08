@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Deep Reinforcement Learning"
+title: "Deep Reinforcement Learning (DRL)"
 categories: misc
 ---
 
-aaa
+# ¿Por qué se necesita DRL en vez de RL de forma tradicional?
+
