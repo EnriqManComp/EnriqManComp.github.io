@@ -12,7 +12,13 @@ categories: misc
 
 Si estos problemas no parecen ser suficientes como para sacrificar optimalidad por realizar la transición hacia el DRL, ya que existen algoritmos para reducir dimensionalidad o los avances computacionales han mejorado el desempeño de los algoritmos en general. Pues existen otras limitantes que se relacionan con la motivación de la inteligencia artificial actual a utilizar sistemas basados en redes neuronales.
 
-1) **No dependencia de conocimiento previo**. Me refiero a que en RL tradicional se necesita información del entorno y de los estados por adelantado para poder calcular los valores de cada estado. 
+1) **No dependencia de conocimiento previo**. Me refiero a que en RL tradicional se necesita información del entorno y de los estados por adelantado para poder calcular los valores de cada estado.
+
+2) **Transfer Learning**. Dejo una pregunta, ¿Cómo utilizar una política entrenada en un problema resuelto para un problema muy parecido que intentamos resolver? En RL tradicional tenemos un mapeo de estados &rarr; valores &rarr; acciones. Para el nuevo problema se necesitaría rellenar toda una tabla de nuevo de este mapeo porque su conocimiento no se basa en parámetros aprendidos si no puramente de este mapeo. O sea, que sería desechar lo aprendido y aprender una política para cada problema.
+
+3) **Generalización**. Se relaciona en parte con el problema anterior. Si tenemos un problema con una dificultad mayor pero tenemos parte de la solución (una política para un problema que ya resolvimos), cómo abstraerse para resolver este problema mayor sin perder lo que ya se conoce.
+
+Ahora si bien el RL tradicional en la mayoría de las veces encuentra una solución óptima global o lo más cercano al global, para todas las aplicaciones no es requerido un nivel alto de optimalidad. Por ejemplo, en una aplicación de respiración asistida, o similares donde la optimalidad del tiempo de reacción del algoritmo es esencial no se puede prescindir de este criterio. Pero, en aplicaciones de robótica de llegar de un punto a otro alejarse de la trayectoria óptima global por 2 cm no es un factor que vaya a afectar grandemente el resultado final. Por supuesto, me refiero a aplicaciones de robótica móvil donde esta distancia es permitida.  
 
 
 
