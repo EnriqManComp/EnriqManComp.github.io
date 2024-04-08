@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "¿Por qué se necesita el Deep Reinforcement Learning?"
+title: "¿Por qué se necesita el Deep Reinforcement Learning (DRL)?"
 categories: misc
 ---
 
-# ¿Qué problemas tiene el RL tradicional?
+## ¿Qué problemas tiene el RL tradicional que se necesita el DRL?
 
 1) **La cantidad de estados y la capacidad de iterar sobre estos**. En RL tradicional se asume que se conocen todos los estados en el entorno por adelantado. Por lo tanto, se puede iterar fácilmente y almacenar el valor asociado a cada uno. Esta metodología funciona cuando se tiene un entorno donde la cantidad de estados es pequeña. Cuando la cantidad de estados es grande se convierte en un problema computacional complejo, principalmente para dispositivos de poca capacidad computacional.
 
@@ -18,7 +18,9 @@ Si estos problemas no parecen ser suficientes como para sacrificar optimalidad p
 
 3) **Generalización**. Se relaciona en parte con el problema anterior. Si tenemos un problema con una dificultad mayor pero tenemos parte de la solución (una política para un problema que ya resolvimos), cómo abstraerse para resolver este problema mayor sin perder lo que ya se conoce.
 
-Ahora si bien el RL tradicional en la mayoría de las veces encuentra una solución óptima global o lo más cercano al global, para todas las aplicaciones no es requerido un nivel alto de optimalidad. Por ejemplo, en una aplicación de respiración asistida, o similares donde la optimalidad del tiempo de reacción del algoritmo es esencial no se puede prescindir de este criterio. Pero, en aplicaciones de robótica de llegar de un punto a otro alejarse de la trayectoria óptima global por 2 cm no es un factor que vaya a afectar grandemente el resultado final. Por supuesto, me refiero a aplicaciones de robótica móvil donde esta distancia es permitida.  
+Ahora si bien el RL tradicional en la mayoría de las veces encuentra una solución óptima global o lo más cercano al global, para todas las aplicaciones no es requerido un nivel alto de optimalidad.
+
+Por ejemplo, en una aplicación de respiración asistida, o similares donde la optimalidad del tiempo de reacción del algoritmo es esencial no se puede prescindir de este criterio. Pero, en aplicaciones de robótica de llegar de un punto a otro alejarse de la trayectoria óptima global por 2 cm no es un factor que vaya a afectar grandemente el resultado final. Por supuesto, me refiero a aplicaciones de robótica móvil donde esta distancia es permitida.  
 
 
 
