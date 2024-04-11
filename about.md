@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I am currently pursuing a Master's degree in Computer Science driven by my passion for technology and programming, as well as my desire for professional growth. I am conducting research on Deep Reinforcement Learning for robotics applications as part of my thesis, exploring novel methods and algorithms to improve the performance and efficiency of autonomous agents. Also, I am engaged in projects and courses related to Data Science, Machine Learning, Artificial Intelligence, and Software Development.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Before enrolling at CICESE, I worked as a telecommunications engineer at ETECSA for two years. In this role, I designed and administered network and IT solutions for various clients, improving their connectivity, security, and performance. Additionally, I collaborated with other engineers and programmers to develop and deploy software applications and databases.
