@@ -17,9 +17,15 @@ Luego de tener el grafo que representa al entorno lo que se hace es aplicar alg�
 * Cuál es el mínimo número de perseguidores que se necesita para encontrar a un evasor en X entorno.
 * Bajo que circunstancias un evasor se puede evadir de P número de perseguidores en X entorno.
 
-
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/enfoque%20combinatorio.png" width="300px" height="280px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/61bc44995a7d6d789236a98541a981b4673eb867/assets/2do-avance-post/enfoque_combinatorio.png" width="300px" height="280px"/>
 </div>
 
+Ventajas:
+* Se pueden evadir los obstáculos debido a la propia naturaleza de discretización del entorno en celdas y la conexión entre celdas alcanzables.
+* Poco coste computacional comparado con otros enfoques de solución.
+Desventajas:
+* Si bien la conexión entre las celdas es cuando son alcanzables físicamente, **no tiene en cuenta si debido a las dimensiones físicas de un robot puede alcanzar dichas celdas**.
+* Existen diferentes configuraciones mecánicas para los robots (por ejemplo: DDR), para este enfoque se **supone que los nodos del grafo son alcanzables y no si es posible alcanzarlo por la configuración mecánica de un robot**.
+* Este enfoque supone que el robot puede observar con sus sensores toda la región que abarca un nodo. En la realidad un robot tiene limitaciones en la capacidad de observación de los sensores, y además tienen ciertos patrones de observación (ejemplo, una cámara omnidireccional y una direccional) que pueden no ajustarse al método de solución del enfoque combinatorio.
 
