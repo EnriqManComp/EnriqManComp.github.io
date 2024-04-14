@@ -18,7 +18,7 @@ Luego de tener el grafo que representa al entorno lo que se hace es aplicar alg√
 * Bajo que circunstancias un evasor se puede evadir de P n√∫mero de perseguidores en X entorno.
 
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/61bc44995a7d6d789236a98541a981b4673eb867/assets/2do-avance-post/enfoque_combinatorio.png" width="300px" height="280px"/>
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_combinatorio.png" width="300px" height="280px"/>
 </div>
 
 Ventajas:
