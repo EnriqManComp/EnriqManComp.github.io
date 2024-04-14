@@ -35,8 +35,11 @@ El enfoque diferencial se tiene un conjunto de controles que puede aplicar un ro
 $$u_p = [v_p, \gamma_p], 0 \leq v_p \leq C, 0 \leq \gamma_p \leq \frac{\pi}{6}$$
 
 Además, se tiene un conjunto de ecuaciones diferenciales con las cuales se puede describir la evolución en el tiempo del robot.
+Ahora, supongamos que tenemos la tarea de ir de un punto a otro (Figura 2). Para ir hasta el punto rojo se puede ir por diferentes trayectorias aplicando diferentes combinaciones en los controles.
+
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_diferencial.png" width="300px" height="280px"/>
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_diferencial.png" width="350px" height="290px"/>
 </div>
+
 
