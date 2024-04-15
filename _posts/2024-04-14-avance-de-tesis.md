@@ -168,7 +168,12 @@ De estas estimaciones de Q(s,a) se extrae el argumento que maximiza el valor de 
 
 Para explicar este proceso tomaremos como ejemplo un problema de clasificación de Machine Learning (ML). En un problema de clasificación se tiene un conjunto de datos con características y una variable objetivo que nos sirve como valor verdadero o de referencia para ajustar a un modelo de ML. En DRL no se tiene una estimación verdadera del valor de Q para comparar con las estimaciones de la red. Por lo tanto, la solución que se recomendó en el paper mencionado anteriormente es utilizar otra red que nos sirva como referencia.
 
-Esta red de referencia va a iniciar con los mismos pesos que la red que contiene la política del robot, pero se va a actualizar cada X veces que entrene la red de referencia.
+A partir de ahora a la red que contiene la política del robot la llamaremos red Q y a la de referencia le llamaremos Q target. Esta red Q target va a iniciar con los mismos pesos que la red Q, pero se va a actualizar cada X veces que se entrene la red Q. O sea, es una versión que se actualiza con menos frecuencia. Esto hace que si la red Q modifica su política a valores que son peores que los anteriores aprendidos pueda regresar un poco hacia atrás por medio de la red Q target y el algoritmo de backpropagation.
+
+Al final se quiere estimar la acción que va a maximizar no solo la recompensa inmediata si no la recompensa futura esperada. Con la red Q target predecimos los valores Q futuros por medio de los estados futuros S' y sustituiremos el máximo de la estimación Q' en la ecuación de Bellman: $$Q = r_s + \gamma * max(Q')$$
+Donde \gamma no es más que un factor de descuento que pesa cuanta atención dedicamos a la recompensa futura. Y esta estimación de Q será la que se usará como Q verdadera para calcular la pérdida entre la Q estimada por la red Q y la Q verdadera calculada. La pérdida que se utiliza generalmente es el square error y como es un minibatch de experiencia se utiliza el Mean Square Error. Luego, se actualizan los pesos de la red Q con dicha pérdida.
+
+
 
 
 
