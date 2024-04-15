@@ -118,7 +118,7 @@ La tarea inicial del perseguidor es ir a un área cercana del evasor para simula
 
 ### Qué se intenta hacer en la primera aproximación a la tarea anterior
 
-* Utilizar como información del estado las imágenes de la cámara aerea. La formación del estado actual y el estado futuro se formarán con cuatro frames del movimiento del robot perseguidor. Esta forma de tratar el estado es similar a la utilizada en el paper ![Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236)
+* Utilizar como información del estado las imágenes de la cámara aerea. La formación del estado actual y el estado futuro se formarán con cuatro frames del movimiento del robot perseguidor. Esta forma de tratar el estado es similar a la utilizada en el paper [Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236)
 * Evitar la colisión con los obstáculos: límites del entorno y agente evasor.
 * Aprender una política de búsqueda del área cercana al agente evasor.
 
@@ -136,7 +136,18 @@ La arquitectura de la red neuronal utilizada es la que se describe en la Figura.
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/DQN%20arch.png" width="350px" height="300px"/>
 </div>
 
-Los algoritmos utilizados para aprender la política y para el entrenamiento de la red anterior se describirán a continuación.
+La cantidad de filtros y sus dimensiones, el stride, y la cantidad de neuronas de las capas densas son las mismas que las utilizadas en el paper mencionado anteriormente. Los algoritmos utilizados para aprender la política y para el entrenamiento de la red anterior se describirán a continuación.
+
+### Tipos de algoritmos utilizados en DRL
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
+</div>
+
+Existen diferentes enfoques para resolver un problema utilizando DRL. Por un lado están los algoritmos basados en Q-learning donde se utiliza un algoritmo para entrenar una red como un buen estimador de la función Q asociada a cada acción cuando se le introduce cierto estado. Y por el otro lado se tienen los algoritmos basados en policy optimization los cuales utilizan por lo general redes Actor-Critic donde se tiene una red Actor que aprende la política directamente y a la salida tiene las probabilidades de ejecutar cada una de las acciones, y se tiene una red Critic que va a cuestionar la decisión tomada por la red Actor.
+
+A continuación se irán describiendo cada uno de los algoritmos. Cada uno de los que voy a explicar fueron los utilizados para implementar en la primera aproximación del proyecto de tesis.
+
 
 
 
