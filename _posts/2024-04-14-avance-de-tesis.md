@@ -38,7 +38,7 @@ Además, se tiene un conjunto de ecuaciones diferenciales con las cuales se pued
 Ahora, supongamos que tenemos la tarea de ir de un punto a otro (Figura 2). Para ir hasta el punto rojo se puede ir por diferentes trayectorias aplicando diferentes combinaciones en los controles.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_diferencial.png" width="350px" height="290px"/>
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_diferencial.png" width="350px" height="300px"/>
 </div>
 
 Estas trayectorias se pueden discretizar a lo largo del tiempo, a los cuales se le llamarán estados. Cada uno de los estados tiene una función de valor en función de un costo asociado a ir por cada una de las trayectorias. Básicamente, la función de valor no es más que una forma de darle cierto valor a un estado sobre otro en función digamos del tiempo que tarda ir del punto azul al rojo tomando esa trayectoria.
@@ -62,6 +62,67 @@ El RL puede ser visto como un proceso de toma de decisiones donde se tiene un ro
 
 #### Elementos fundamentales que intervienen del RL
 
-Existen dos elementos fundamentales en el enfoque de RL. El primero, es lo que se llama Markov Decision Process
+Existen dos elementos fundamentales en el enfoque de RL. El primero, es lo que se llama Markov Decision Process (MDP) el cual es un marco matemático para describir el proceso de toma de decisiones descrito anteriormente.
+
+Los elementos que intervienen en un MDP son los siguientes:
+* Estados (S): El cual es la información necesaria para que el robot ejecute las acciones. Este estado puede ser información proveniente del entorno y otro tipo de información como lecturas de los sensores del propio robot.
+* Modelo: El modelo es el que describe la transición de un estado S a un estado S'. El modelo puede ser determinístico o probabilístico.
+* Acciones: Son las acciones o controles que puede ejecutar el robot.
+* Recompensas: Son las recompensas que puede recibir un robot por estar en cierto estado o por llegar a cierto estado. Estas recompensas pueden ser discretas o continuas o una combinación de ambas.
+* Política: Al final lo que se quiere obtener es una política que mapee de un estado S a una acción A que máximice la recompensa esperada para cierta tarea. Una política no es más que el comportamiento que va a tener un robot si le presentamos un estado S.
+
+El segundo de los elementos que intervienen en el enfoque de RL es las funciones de valor. Existen diferentes funciones de valor las más conocidas es la función de estado V, y la función de estado-acción Q. Donde la V es la ecuación de Bellman vista anteriormente para el enfoque diferencial, y la Q es una aproximación de la V donde se tiene en cuenta el valor para cada acción.
+
+### Deep Reinforcement Learning (DRL)
+
+Este enfoque es necesario debido a varios factores que son explicados en el post: [¿Por qué se necesita el DRL?](https://enriquecompanioni.me/misc/2024/04/08/deep-reinforcement-learning.html)
+Bajo la deficiencia del RL se ha tratado de buscar métodos alternativos donde los más utilizados son aquellos que parametrizan la política en forma de vectores de peso como es el caso de las redes neuronales (DRL). En DRL se utiliza la misma teoría que en RL solo que la política la aprende una red neuronal.
+
+### Objetivo general del proyecto de tesis
+
+En el proyecto de tesis lo que se quiere hacer es diseñar, implementar y evaluar una red neuronal que utilice como datos de entrada las lecturas de los sensores de un robot móvil y arroje como resultado una política de movimiento para un problema de PE.
+
+#### Objetivos específicos
+
+* Obtener un conjunto de datos extraídos de los sensores de un robot móvil en un entorno creado en Gazebo con un evasor.
+
+* Diseñar, implementar y evaluar una red neuronal que utilice dicha información como su conjunto de entrenamiento.
+
+* Evaluar el modelo de red neuronal entrenado en diferentes entornos con distintas complejidades.
+
+### Metodología
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/metodologia.png" width="350px" height="300px"/>
+</div>
+
+### Entorno
+
+El entorno diseñado en Gazebo tiene una dimensión de 6x6 metros, y una cámara aerea ubicada a 8 metros de altura. Los robots diseñados tienen una configuración DDR y pueden tomar 8 posibles acciones A = {No action, Up, Down, Left, Right, Double-Left, Double-Right}.   
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/entorno.png" width="350px" height="300px"/>
+</div>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/entorno1.png" width="350px" height="300px"/>
+</div>
+
+### Tarea inicial del perseguidor
+
+La tarea inicial del perseguidor es ir a un área cercana del evasor para simular una tarea de mantener en vista.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tarea_perseguidor.png" width="350px" height="300px"/>
+</div>
+
+
+
+
+
+
+
+
+
 
 
