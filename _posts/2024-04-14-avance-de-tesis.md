@@ -116,6 +116,27 @@ La tarea inicial del perseguidor es ir a un área cercana del evasor para simula
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tarea_perseguidor.png" width="350px" height="300px"/>
 </div>
 
+### Qué se intenta hacer en la primera aproximación a la tarea anterior
+
+* Utilizar como información del estado las imágenes de la cámara aerea. La formación del estado actual y el estado futuro se formarán con cuatro frames del movimiento del robot perseguidor. Esta forma de tratar el estado es similar a la utilizada en el paper ![Human-level control through deep reinforcement learning](https://www.nature.com/articles/nature14236)
+* Evitar la colisión con los obstáculos: límites del entorno y agente evasor.
+* Aprender una política de búsqueda del área cercana al agente evasor.
+
+**Subtareas:**
+
+* Aprender propiedades inerciales del agente.
+* Aprender movimientos mecánicos del agente.
+* Aprender distorsión 3D a 2D por cámara panorámica. 
+
+#### Arquitectura de red neuronal utilizada
+
+La arquitectura de la red neuronal utilizada es la que se describe en la Figura. En la cual se tiene un conjunto de capas convolucionales y un conjunto de capas densas. A la salida de la red se va a tener una capa densa en la cual la cantidad de neuronas van a coincidir con las acciones que puede ejecutar el robot.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/DQN%20arch.png" width="350px" height="300px"/>
+</div>
+
+Los algoritmos utilizados para aprender la política y para el entrenamiento de la red anterior se describirán a continuación.
 
 
 
