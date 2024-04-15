@@ -58,7 +58,7 @@ Desventaja:
 
 A partir de los problemas de los enfoques anteriores se buscaron otras alternativas para resolver problemas de PE. Uno de estas alternativas fue el RL.
 
-El RL puede ser visto como un proceso de toma de decisiones donde se tiene un robot y un entorno. El robot recibe una observación del entorno en el instante $$t$$ y ejecuta un control o acción en base a la observación que recibe. Luego, recibe otra observación en el instante $$t+1$$ y ejecuta otro control, y así sucesivamente en el tiempo. Este proceso de toma de decisión con el objetivo de realizar cierta tarea digamos ir de un punto a otro como el ejemplo anterior.
+El RL puede ser visto como un proceso de toma de decisiones donde se tiene un robot y un entorno. El robot recibe una observación del entorno en el instante t y ejecuta un control o acción en base a la observación que recibe. Luego, recibe otra observación en el instante t+1 y ejecuta otro control, y así sucesivamente en el tiempo. Este proceso de toma de decisión con el objetivo de realizar cierta tarea digamos ir de un punto a otro como el ejemplo anterior.
 
 #### elementos fundamentales que intervienen del RL
 
