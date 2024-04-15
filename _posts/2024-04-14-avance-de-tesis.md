@@ -148,6 +148,27 @@ Existen diferentes enfoques para resolver un problema utilizando DRL. Por un lad
 
 A continuación se irán describiendo cada uno de los algoritmos. Cada uno de los que voy a explicar fueron los utilizados para implementar en la primera aproximación del proyecto de tesis.
 
+#### DQN
+
+**¿Cómo funciona el algoritmo de aprendizaje y la arquitectura DQN ?**
+
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/DQN%20policy.png" width="350px" height="300px"/>
+</div>
+
+La arquitectura de red neuronal anteriormente vista funciona como cualquier otra CNN. En esta sección explicaré lo que sucede a la salida de la red. Como sabemos una unidad lineal de una capa densa (neurona) lo que estima a la salida es la ecuación lineal y=w*x + b. Como se mencionó anteriormente la capa densa de salida coincide con la cantidad de acciones que puede ejecutar el robot, por lo tanto, las llamaremos igual que las acciones que puede realizar el robot (simplificando: UP, DOWN, LEFT, RIGHT). La salida de cada neurona no es más que un valor numérico a la salida, este valor es la estimación del valor Q para cada una de las acciones Q(s,a).
+
+De estas estimaciones de Q(s,a) se extrae el argumento que maximiza el valor de Q. Lo que se puede interpretar como extraer la acción que maximiza el valor de Q.
+
+##### Algoritmo de aprendizaje o entrenamiento
+
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/DQN%20train.png" width="350px" height="300px"/>
+</div>
+
+Para explicar este proceso tomaremos como ejemplo un problema de clasificación de Machine Learning (ML). En un problema de clasificación se tiene un conjunto de datos con características y una variable objetivo que nos sirve como valor verdadero o de referencia para ajustar a un modelo de ML. En DRL no se tiene una estimación verdadera del valor de Q para comparar con las estimaciones de la red. Por lo tanto, la solución que se recomendó en el paper mencionado anteriormente es utilizar otra red que nos sirva como referencia.
+
+Esta red de referencia va a iniciar con los mismos pesos que la red que contiene la política del robot, pero se va a actualizar cada X veces que entrene la red de referencia.
 
 
 
