@@ -168,10 +168,52 @@ De estas estimaciones de Q(s,a) se extrae el argumento que maximiza el valor de 
 
 Para explicar este proceso tomaremos como ejemplo un problema de clasificación de Machine Learning (ML). En un problema de clasificación se tiene un conjunto de datos con características y una variable objetivo que nos sirve como valor verdadero o de referencia para ajustar a un modelo de ML. En DRL no se tiene una estimación verdadera del valor de Q para comparar con las estimaciones de la red. Por lo tanto, la solución que se recomendó en el paper mencionado anteriormente es utilizar otra red que nos sirva como referencia.
 
-A partir de ahora a la red que contiene la política del robot la llamaremos red Q y a la de referencia le llamaremos Q target. Esta red Q target va a iniciar con los mismos pesos que la red Q, pero se va a actualizar cada X veces que se entrene la red Q. O sea, es una versión que se actualiza con menos frecuencia. Esto hace que si la red Q modifica su política a valores que son peores que los anteriores aprendidos pueda regresar un poco hacia atrás por medio de la red Q target y el algoritmo de backpropagation.
+**A partir de ahora a la red que contiene la política del robot la llamaremos red Q y a la de referencia le llamaremos Q target.**
+
+Esta red Q target va a iniciar con los mismos pesos que la red Q, pero se va a actualizar cada X veces que se entrene la red Q. O sea, es una versión que se actualiza con menos frecuencia. Esto hace que si la red Q modifica su política a valores que son peores que los anteriores aprendidos pueda regresar un poco hacia atrás por medio de la red Q target y el algoritmo de backpropagation.
 
 Al final se quiere estimar la acción que va a maximizar no solo la recompensa inmediata si no la recompensa futura esperada. Con la red Q target predecimos los valores Q futuros por medio de los estados futuros S' y sustituiremos el máximo de la estimación Q' en la ecuación de Bellman: $$Q = r_s + \gamma * max(Q')$$
-Donde \gamma no es más que un factor de descuento que pesa cuanta atención dedicamos a la recompensa futura. Y esta estimación de Q será la que se usará como Q verdadera para calcular la pérdida entre la Q estimada por la red Q y la Q verdadera calculada. La pérdida que se utiliza generalmente es el square error y como es un minibatch de experiencia se utiliza el Mean Square Error. Luego, se actualizan los pesos de la red Q con dicha pérdida.
+Donde {\gamma} no es más que un factor de descuento que pesa cuanta atención dedicamos a la recompensa futura. Y esta estimación de Q será la que se usará como Q verdadera para calcular la pérdida entre la Q estimada por la red Q y la Q verdadera calculada. La pérdida que se utiliza generalmente es el square error y como es un minibatch de experiencia se utiliza el Mean Square Error. Luego, se actualizan los pesos de la red Q con dicha pérdida.
+
+Para el entrenamiento de la red Q se evalua la acción tomada anteriormente y se vuelve a estimar el valor Q para esa acción. Dicho de otro modo la selección de la acción y la evaluación de la acción se realiza de forma junta en una misma red.
+
+Este algoritmo es conocido por funcionar en muchas aplicaciones, pero tiende algunas veces a aprender valores altos de Q para las acciones. Esto es debido a que tiene un paso de maximización sobre la estimación de los valores de las acciones. Esto hace que si se tiene un conjunto de acciones posibles y la red aún no ha aprendido nada la red comience a hacerle caso a cierta acción que parece buena en principio cuando en realidad no lo era.     
+
+#### Double DQN (DDQN)
+
+Este algoritmo se centra en mitigar este efecto de sobreestimación y su solución se basa en dividir la estimación del valor de la acción y su evaluación. Con el estado inicial se mantiene lo presentado anteriormente, pero para el estado siguiente se estima la acción que va a maximizar el estado futuro y se evalúa esta acción en la estimación del valor Q de la red Q target. Esto es con el objetivo de tener también una predicción en el futuro de la acción que va a maximizar la Q futura y por consiguiente la recompensa futura esperada.
+
+#### Dueling DQN y Double Dueling DQN (D3QN)
+
+Estas dos las explicaré juntas porque la arquitectura Dueling es el cambio de arquitectura de la red neuronal y D3QN es el algoritmo visto anteriormente. 
+La motivación de los autores del paper básicamente lo que buscan es proponer una arquitectura alternativa de red neuronal a las utilizadas para Q-learning sin modificar los algoritmos existentes. El beneficio que proponen para cambiar la arquitectura de la red es buscar abarcar un poco más de generalización en problemas donde las redes existentes no aprendían una política correcta.
+
+La idea que plantean es separar el valor Q en una representación del estado (que es la función V) y una función de ventaja (A) que no es más que una medida de la importancia de cada acción. Esta separación está fundamentada además porque en ciertos problemas no se necesita calcular el valor de las acciones porque no existe una ventaja de tomar una sobre otra. Tomemos como ejemplo el caso del juego Enduro donde la parte encargada de aprender la función de valor observa continuamente la carretera de forma adelantada mientras que la función de ventaja solo tiene valor cuando la colisión con un objeto es eminente.
+
+Las operaciones que le siguen al stream de la función de ventaja es porque la ecuación Q=V+A no es identificable porque diferentes valores de V y A pueden dar el mismo valor de Q. En el paper dicen que esto vuelve inestable la política y además vuelve ineficiente el aprendizaje. Por lo tanto, la vuelven identificable centrando a 0 los valores de la función de ventaja reduciendo la media de los valores de esta función.
+
+Bueno, en resumen desde un punto de vista más abstracto vamos a tener un conjunto de parámetros independientes que van a intentar ser buenos estimadores de la función V y la A y esto va a traer mejoras en el aprendizaje de una política para un agente.
+
+Ahora, todos estos algoritmos de Q-learning se demoran en converger por lo tanto, no podía probar si realmente iban a funcionar caundo mi problema es más complejo que tener juegos de Atari que es el benchmark que estos papers tratan de batir. De igual forma revisé papers para saber si se habían utilizado antes en aplicaciones de robótica similares a las que estoy tratando en el proyecto.
+
+Pues para probar este algoritmo recurrí primero a un recurso llamado OpenAI Gym el cual tiene diferentes juegos con el propósito de utilizarlos en algoritmos de RL. El primero que probé fue este llamado Lunar Lander el cual cada estado tiene 8 observaciones de la nave que ven y la nave puede ejecutar 4 acciones distintas. Y el objetivo es aterrizar entre las dos banderas. Ahí en la gráfica les presento el resultado del entrenamiento utilizando la arquitectura dueling y el algoritmo Double DQN. Este epsilon que ven es una de las formas que los algoritmos de Q-learning introducen exploración en la política, y no es más que seleccionar un número al azar entre 0 y 1 y si es menor que el valor de epsilon ejecuta una acción aleatoria y si no realizo una predicción de la acción con la red Q, que sería el equivalente a explotar la política actual. Con el tiempo este epsilon se va reduciendo dejando menos exploración y más explotación de la política. 
+El video que ven ahí es 10 corridas de la política que aprendió hasta ese momento y se puede observar que ya empieza a tener buenos resultados.
+
+Luego, tomamos la decisión de implementar un escenario que se pareciera a lo que queremos hacer pero más simplificado de forma tal que pudiesemos probar estos algoritmos en nuestro propia mesa de prueba por decirlo de una forma. En pygame diseñé este juego donde el punto azul representa un perseguidor y el rojo un evasor. Simulamos el mismo problema de ir al área cercana al punto rojo ejecutando las acciones A = {No Action, Up, Down, Left, Right, Double-Left, Double-Right} y el estado consistía en la imagen que ven escalada a 84x84 y en escala de grises. Y si bien para el problema anterior del Lunar Lander funcionaba bien y este problema empezaba a dar ciertos resultados positivos la verdad es que se demoraba muchísimo, esto que ven me tardó dos semanas en obtenerlo.
+
+Luego leí más papers y algunos combinaban imágenes con otros sensores como lidar y pasé a utilizarlo también. No tengo resultados de ese experimento porque lo que buscaba era si añadiendole esa información podía converger más rápido y no fue así. Y empecé a buscar también otras alternativas en cuanto al tratado de la experience replay. Probé el tradicional y uno que se llama Prioritized Experience Replay el cual asigna probabilidades a las tuplas de experiencia que se van actualizando a partir de las pérdidas del algoritmo de entrenamiento de las redes.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
