@@ -30,7 +30,7 @@ En este enfoque, se discretiza un entorno en celdas, donde cada celda es un nodo
 
 Con este enfoque, se cuenta con un modelo de configuración mecánica para los robots, que permite aplicar una serie de controles para guiar su movimiento. Por ejemplo, estos controles pueden estar definidos como:
 
-$$u_p = [v_p, \gamma_p], 0 \leq v_p \leq C, 0 \leq \gamma_p \leq \frac{\pi}{6}$$
+<p>\[u_p = [v_p, \gamma_p], 0 \leq v_p \leq C, 0 \leq \gamma_p \leq \frac{\pi}{6}\]</p>
 
 
 Además, se dispone de un conjunto de ecuaciones diferenciales que describen la evolución en el tiempo del robot. Las restricciones en los controles se incorporan como restricciones adicionales en estas ecuaciones diferenciales.
