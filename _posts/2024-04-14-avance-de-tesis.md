@@ -32,11 +32,12 @@ Con este enfoque, se cuenta con un modelo de configuración mecánica para los r
 
 $$u_p = [v_p, \gamma_p], 0 \leq v_p \leq C, 0 \leq \gamma_p \leq \frac{\pi}{6}$$
 
+
 Además, se dispone de un conjunto de ecuaciones diferenciales que describen la evolución en el tiempo del robot. Las restricciones en los controles se incorporan como restricciones adicionales en estas ecuaciones diferenciales.
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/ED.png" width="400px" height="150px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/ED.png" width="400px" height="150px"/>
 </div>
 <br />
 
@@ -54,7 +55,7 @@ El objetivo final es encontrar el conjunto óptimo de controles que minimice la 
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/HJB.png" width="350px" height="60px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/HJB.png" width="350px" height="60px"/>
 </div>
 <br />
 
@@ -75,7 +76,7 @@ El RL puede entenderse como un proceso de toma de decisiones en el cual hay un f
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/RL%20workflow.png" width="600px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/RL%20workflow.png" width="600px" height="300px"/>
 </div>
 <br />
 
@@ -100,13 +101,13 @@ Existen diferentes funciones de valor en el aprendizaje por refuerzo, siendo las
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/V.png" width="400px" height="80px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/V.png" width="400px" height="80px"/>
 </div>
 <br />
 
 <br />
 <div align="center">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/Q.png" width="370px" height="45px"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/Q.png" width="370px" height="45px"/>
 </div>
 <br />
 
@@ -118,7 +119,7 @@ Ante las deficiencias del aprendizaje por refuerzo convencional, se han explorad
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/DRL.png" width="600px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/DRL.png" width="600px" height="300px"/>
 </div>
 <br />
 
@@ -184,7 +185,7 @@ Subtareas:
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="500px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="500px" height="300px"/>
 </div>
 <br />
 
