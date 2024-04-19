@@ -206,7 +206,7 @@ Los resultados de estas modificaciones se pueden observar en el repositorio [sma
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/smart_disks_D3QN.png" width="350px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/smart_disks_D3QN.png" width="600px" height="350px"/>
 </div>
 <br />
 
