@@ -34,6 +34,12 @@ $$u_p = [v_p, \gamma_p], 0 \leq v_p \leq C, 0 \leq \gamma_p \leq \frac{\pi}{6}$$
 
 Además, se dispone de un conjunto de ecuaciones diferenciales que describen la evolución en el tiempo del robot. Las restricciones en los controles se incorporan como restricciones adicionales en estas ecuaciones diferenciales.
 
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/ED.png" width="400px" height="150px"/>
+</div>
+<br />
+
 Supongamos que un robot desea desplazarse de un punto a otro. Para lograrlo, el robot puede aplicar diversas combinaciones de controles, lo que resultará en diferentes trayectorias. Cada trayectoria tendrá asociado un costo, como el tiempo necesario para recorrerla. Además, cada trayectoria se divide en estados, que representan los puntos específicos a lo largo de la trayectoria donde el robot ha aplicado las combinaciones de controles correspondientes.
 
 <br />
@@ -45,6 +51,12 @@ Supongamos que un robot desea desplazarse de un punto a otro. Para lograrlo, el 
 Cada estado en el conjunto de trayectorias tiene asignada una función de valor que depende del costo J. En términos simples, esta función de valor asigna un valor a cada estado, lo que indica qué tan favorable es ese estado en comparación con otros. En esencia, proporciona una medida de qué tan bien está funcionando el robot cuando se encuentra en ese estado.
 
 El objetivo final es encontrar el conjunto óptimo de controles que minimice la función de costo J. Es decir, queremos encontrar los controles que nos lleven a través de la ruta o los estados que minimicen el tiempo necesario para completar la tarea. Resolver este problema implica buscar una solución a la ecuación de Hamilton-Jacobi-Bellman (HJB), que es una herramienta común en la teoría de control óptimo y la optimización dinámica.
+
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/HJB.png" width="350px" height="60px"/>
+</div>
+<br />
 
 **Ventajas:**
 * Proporciona una descripción matemática sólida para abordar el problema.
@@ -60,6 +72,12 @@ El objetivo final es encontrar el conjunto óptimo de controles que minimice la 
 Dado los desafíos presentes en los enfoques previos, se han explorado otras alternativas para abordar los problemas de PE. Uno de estos enfoques es el RL.
 
 El RL puede entenderse como un proceso de toma de decisiones en el cual hay un flujo continuo de información proveniente del entorno, la cual el robot procesa para tomar acciones con el fin de llevar a cabo una tarea específica en dicho entorno.
+
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/RL%20workflow.png" width="600px" height="300px"/>
+</div>
+<br />
 
 #### Elementos fundamentales que intervienen del RL
 
@@ -80,11 +98,29 @@ Existen diferentes funciones de valor en el aprendizaje por refuerzo, siendo las
 * La función de estado V(s) se define mediante la ecuación de Bellman, la cual puede calcularse recursivamente si se dispone de un modelo de transición de estados. Esta función nos proporciona una estimación de todas las recompensas futuras. El parámetro γ representa el factor de descuento, que determina cuánto valor se asigna a las recompensas futuras en comparación con las actuales. Es importante destacar que este parámetro tiene un efecto exponencial en la ecuación de estado, lo que significa que las recompensas más cercanas al estado s tendrán un mayor impacto en las decisiones.
 * La función de estado-acción Q(s,a) es una variante de la función de valor que calcula el valor esperado para cada acción en un estado dado s. Esta función también se puede derivar utilizando la ecuación de Bellman, pero se enfoca en evaluar cada acción específica en lugar del estado en su totalidad.
 
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/V.png" width="400px" height="80px"/>
+</div>
+<br />
+
+<br />
+<div align="center">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/Q.png" width="370px" height="45px"/>
+</div>
+<br />
+
 ### Deep Reinforcement Learning (DRL)
 
 El DRL se vuelve necesario debido a varias limitaciones del enfoque tradicional de aprendizaje por refuerzo. Se ha discutido a fondo en el artículo [¿Por qué se necesita el DRL?](https://enriquecompanioni.me/misc/2024/04/08/deep-reinforcement-learning.html) disponible en este enlace.
 
 Ante las deficiencias del aprendizaje por refuerzo convencional, se han explorado métodos alternativos, siendo uno de los más prominentes aquellos que emplean redes neuronales para parametrizar la política de acción (DRL). En el DRL, se aplica la misma teoría que en el RL, pero la política de acción es aprendida por una red neuronal, lo que permite abordar problemas más complejos y obtener mejores resultados en tareas de aprendizaje por refuerzo.
+
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/DRL.png" width="600px" height="300px"/>
+</div>
+<br />
 
 ### Objetivo general del proyecto de tesis
 
@@ -148,7 +184,7 @@ Subtareas:
 
 <br />
 <div align="center">
-  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
 </div>
 <br />
 
@@ -168,9 +204,13 @@ A partir de los problemas anteriores, se adoptaron nuevos enfoques para abordar 
 
 Los resultados de estas modificaciones se pueden observar en el repositorio [smart-disks](https://github.com/EnriqManComp/smart-disks). A pesar de obtener resultados positivos con la implementación del algoritmo Double DQN y la arquitectura Dueling, aún persistía el problema de la inestabilidad en los puntajes acumulados. Por lo tanto, se recurrió a un algoritmo más robusto basado en la optimización de políticas, llamado Proximal Policy Optimization (PPO).
 
+<br />
+<div align="center">
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/smart_disks_D3QN.png" width="350px" height="300px"/>
+</div>
+<br />
+
 Con la implementación de este algoritmo, el problema anterior se solucionó. Los resultados pueden observarse en el repositorio [smart-disk-ppo](https://github.com/EnriqManComp/Deep-Reinforcement-Learning-Portfolio/tree/master/smart-disks-PPO).
-
-
 
 
 
