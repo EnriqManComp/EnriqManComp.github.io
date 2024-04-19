@@ -135,11 +135,27 @@ Dicho de otro modo, las tareas a realizar son:
 
 ### Algoritmos utilizados
 
-Para la realización de la primera tarea en Gazebo se utilizó el algoritmo DQN, Double DQN, Dueling DQN, y Dueling Double DQN. Además, para mejorar la eficiencia en la selección de las muestras de entrenamiento se implementó la variante Prioritized Experience Replay. Los resultados no fueron los esperados debido a la inestabilidad en el entrenamiento que generalmente sufren estos métodos basados en Q-learning.
-
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
 </div>
+
+Para la realización de la primera tarea en Gazebo se utilizó el algoritmo DQN, Double DQN, Dueling DQN, y Dueling Double DQN. Además, para mejorar la eficiencia en la selección de las muestras de entrenamiento se implementó la variante Prioritized Experience Replay. Los resultados no fueron los esperados debido a las siguientes razones:
+* La inestabilidad en el entrenamiento que generalmente sufren los métodos basados en Q-learning se refleja en inestabilidad en la explotación de la política.
+* El algoritmo se ejecuta en tiempo real, por lo tanto, en los instantes donde se entrena la red neuronal que ejecuta la política existe una demora en la captura del estado S y el estado S'. Esto puede introducir cierto nivel de ruido al aprendizaje de la red reflejándose en su capacidad de anticipación en las decisiones que debe tomar. 
+* Las imágenes como única información del estado pueden no contener suficiente información para tomar decisiones buenas o ayudar en la convergencia del algoritmo.
+* Además, ajeno a los resultados, Gazebo presenta algunas dificultades para eliminar la información de los sensores de contacto, utilizados para detectar colisiones, al momento de eliminar y reaparecer un modelo de un robot. Este bug se puede encontrar abierto en el repositorio de GitHub para Gazebo, [bug](https://github.com/gazebosim/gz-sim/issues/2223) Por lo tanto, la alternativa realizada fue una automatización de procesos para abrir consolas que iniciaran los diferentes nodos utilizados en el algoritmo, proceso que añade una pérdida de tiempo valioso en proyectos de DRL. 
+
+### Nuevo enfoque
+
+A partir de los problemas anteriores se tomaron nuevos enfoques para resolver el problema anterior:
+* Programar el mismo diseño en PyGame y utilizarlo en el resto del proyecto.
+* Utilizar un sensor láser como medio adicional de sensado para incorporarlo como información a los estados.
+* Para tener resultados con anticipación se decidió simplificar los controles del robot, y no utilizar la física del mundo real que se considera en Gazebo.
+
+Los resultados para estas modificaciones se pueden observar en el repositorio [smart-disks](https://github.com/EnriqManComp/smart-disks). Como resultado de la implementación del algoritmo Double DQN y la arquitectura Dueling se obtuvieron resultados positivos pero aún no se solucionaba el problema de la inestabilidad de los scores acumulados obtenidos. Por lo tanto, se utilizó un algoritmo más robusto basado en Policy optimization llamado Proximal Policy Optimization (PPO).
+
+Para este algoritmo el problema anterior quedó solucionado, se pueden observar los resultados en el repositorio [smart-disk-ppo](https://github.com/EnriqManComp/Deep-Reinforcement-Learning-Portfolio/tree/master/smart-disks-PPO)
+
 
 
 
