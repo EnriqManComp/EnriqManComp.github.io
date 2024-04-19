@@ -1,8 +1,8 @@
----
+<!---
 layout: post
 title: "What is TFRecord?"
 categories: tensorflow
----
+--->
 
 ## ¿Qué es TFRecord?
 
