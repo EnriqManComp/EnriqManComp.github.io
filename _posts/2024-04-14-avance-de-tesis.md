@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Avance de Proyecto de Tesis"
+title: "Introducción a mi Proyecto de Tesis de Maestría"
 categories: thesis
 ---
 
