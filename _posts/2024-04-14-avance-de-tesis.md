@@ -36,9 +36,11 @@ Además, se dispone de un conjunto de ecuaciones diferenciales que describen la 
 
 Supongamos que un robot desea desplazarse de un punto a otro. Para lograrlo, el robot puede aplicar diversas combinaciones de controles, lo que resultará en diferentes trayectorias. Cada trayectoria tendrá asociado un costo, como el tiempo necesario para recorrerla. Además, cada trayectoria se divide en estados, que representan los puntos específicos a lo largo de la trayectoria donde el robot ha aplicado las combinaciones de controles correspondientes.
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/enfoque_diferencial.png" width="350px" height="300px"/>
 </div>
+<br />
 
 Cada estado en el conjunto de trayectorias tiene asignada una función de valor que depende del costo J. En términos simples, esta función de valor asigna un valor a cada estado, lo que indica qué tan favorable es ese estado en comparación con otros. En esencia, proporciona una medida de qué tan bien está funcionando el robot cuando se encuentra en ese estado.
 
@@ -98,9 +100,11 @@ El objetivo principal de este proyecto de tesis es diseñar, implementar y evalu
 
 ### Metodología
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/metodologia.png" width="350px" height="300px"/>
 </div>
+<br />
 
 ### Propuesta inicial
 
@@ -108,21 +112,27 @@ El objetivo principal de este proyecto de tesis es diseñar, implementar y evalu
 
 El entorno se ha configurado en Gazebo, donde se ha creado una habitación de dimensiones 6.0x6.0 metros. Además, se ha ubicado una cámara aérea a una altura de 8.0 metros para supervisar la actividad en el entorno. Los robots empleados en este entorno tienen una configuración DDR y son capaces de ejecutar 8 acciones distintas, definidas como A = {No action,Up,Down,Left,Right,Double-Left,Double-Right}. El proceso de diseño de los robots se basó en una metodología similar a la descrita en el repositorio [differential-drive-robot-model-ros-gazebo](https://github.com/EnriqManComp/differential-drive-robot-model-ros-gazebo)   
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/entorno.png" width="350px" height="300px"/>
 </div>
+<br />
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/entorno1.png" width="350px" height="300px"/>
 </div>
+<br />
 
 #### Tarea inicial del perseguidor
 
 La tarea inicial del perseguidor consiste en utilizar imágenes aéreas provenientes de la cámara como estados, con el objetivo de ejecutar acciones que lo conduzcan hacia un área cercana al evasor, que inicialmente permanecerá en una posición fija.
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tarea_perseguidor.png" width="350px" height="300px"/>
 </div>
+<br />
 
 Las tareas a realizar se desglosan de la siguiente manera:
 
@@ -136,9 +146,11 @@ Subtareas:
 
 ### Algoritmos utilizados
 
+<br />
 <div align="center">
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
 </div>
+<br />
 
 Para la realización de la tarea en Gazebo, se emplearon los algoritmos DQN, Double DQN, Dueling DQN y Dueling Double DQN. Además, para mejorar la eficiencia en la selección de las muestras de entrenamiento, se implementó la variante Prioritized Experience Replay (PER). Los resultados no fueron los esperados debido a las siguientes razones:
 
