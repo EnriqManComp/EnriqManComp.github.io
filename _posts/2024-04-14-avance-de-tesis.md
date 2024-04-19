@@ -184,7 +184,7 @@ Subtareas:
 
 <br />
 <div align="center">
-  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="350px" height="300px"/>
+  <img src="https://github.com/EnriqManComp/EnriqManComp.github.io/blob/master/assets/2do-avance-post/tipos%20de%20algoritmos%20en%20DRL.png" width="500px" height="300px"/>
 </div>
 <br />
 
