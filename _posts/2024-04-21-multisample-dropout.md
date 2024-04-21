@@ -29,8 +29,8 @@ Básicamente, dropout lo que hace es descartar aleatoriamente una proporción de
 
 ### Hiperparámetros recomendados
 
-* Cantidad de streams: En el paper prueban las combinaciones de sin dropout, 1, 2, 4, 8, 16, 32, y 64. La selección de la cantidad de streams depende del tiempo de ejecución que se desee, pero se demuestra que entre mayor sea el número de streams utilizados disminuye el error en el entrenamiento y la validación.
-* En cuanto a la probabilidad de apagado de neuronas se prueba 10%, 30%, 50%, 70%, y 90%. La conclusión es que con 30% de probabilidad de descarte se obtienen los mejores resultados.
+* **Cantidad de streams:** En el paper prueban las combinaciones de sin dropout, 1, 2, 4, 8, 16, 32, y 64. La selección de la cantidad de streams depende del tiempo de ejecución que se desee, pero se demuestra que entre mayor sea el número de streams utilizados disminuye el error en el entrenamiento y la validación.
+* **Probabilidad de descarte de neuronas:** Se prueba 10%, 30%, 50%, 70%, y 90% de probabilidad, donde se concluye que para 30% de probabilidad de descarte se obtienen los mejores resultados.
 
 
 
