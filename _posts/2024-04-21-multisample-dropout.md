@@ -14,4 +14,28 @@ Básicamente, dropout lo que hace es descartar aleatoriamente una proporción de
   <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/multi-sample-dropout/Post_MultiSample_Dropout.png" />
 </div>
 
+## Resumen del paper
+
+* En el paper se propone utilizar diferentes stream de capas dropout donde lo único que se comparte son los pesos de las fully connected layers.
+* Luego para cada uno de los stream se calcula la pérdida y estas pérdidas se promedian para obtener la pérdida para actualizar los pesos.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/EnriqManComp/EnriqManComp.github.io/master/assets/multi-sample-dropout/Post_MultiSample_Dropout1.png" />
+</div>
+
+* El uso de esta técnica reduce el número de iteraciones para el entrenamiento, pero incrementa el tiempo de ejecución por iteraciones.
+* Donde quiera que exista una capa dropout con características similares a la figura anterior se puede usar este método para acelerar el entrenamiento.
+* Esta técnica no solo acelera el entrenamiento sino que demuestran que se puede alcanzar una exactitud mayor en los resultados.
+
+### Hiperparámetros recomendados
+
+* Cantidad de streams: En el paper prueban las combinaciones de sin dropout, 1, 2, 4, 8, 16, 32, y 64. La selección de la cantidad de streams depende del tiempo de ejecución que se desee, pero se demuestra que entre mayor sea el número de streams utilizados disminuye el error en el entrenamiento y la validación.
+* En cuanto a la probabilidad de apagado de neuronas se prueba 10%, 30%, 50%, 70%, y 90%. La conclusión es que con 30% de probabilidad de descarte se obtienen los mejores resultados.
+
+
+
+
+
+
+
 
