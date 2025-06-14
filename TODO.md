@@ -1,0 +1,4 @@
+- [ ] Add three column format to skills
+- [ ] Group the technical skills in logical order
+- [ ] Projects
+- [ ] Personal Picture 
