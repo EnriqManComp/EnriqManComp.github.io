@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Enrique Companioni Portfolio</title>
+		<title>💻 Enrique Companioni Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,7 +27,7 @@
 										<li><a href="https://github.com/EnriqManComp" class="icon brands fa-github"><span class="label">Github</span></a></li>
 										<li><a href="https://www.linkedin.com/in/enrique-companioni/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
 										<li><a href="https://www.kaggle.com/enriquecompanioni" class="icon brands fa-kaggle"><span class="label">Snapchat</span></a></li>
-										<li><a href="https://medium.com/@companioni" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+										<!-- <li><a href="https://medium.com/@companioni" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
 									</ul>
 								</header>
 
@@ -37,24 +37,33 @@
 										<header>
 											<h1>Hi, I’m Enrique Companioni<br />
 											</h1>
-											<p> Data Engineering & Analytics | Big Data, Database Design, and Predictive Modeling  </p>
+											<p> Data Analytics Engineer | Big Data | Machine Learning  </p>
 										</header>
 										<p><b>About Me:</b></p>
 										<p>
-											<ul>
-												<li>Currently pursuing an M.S. in Computer Science</li>
-												<li>B.S. in Telecommunication and Electronics Engineering</li>
-												<li>Passionate about working with big data, building end-to-end data solutions, and developing machine learning models to solve real-world problems</li>
-												<li><ul>Previous experience in:
-													<li>Software Development</li>
-													<li>Data Analysis</li>
-													<li>Database Administration</li>
-												</li></ul>
+											<ul style="list-style-type: square;">
+												<li>M.S. in Computer Science.</li>
+												<li>B.S. in Telecommunication and Electronics Engineering.</li>
+												<li style="margin-bottom: 0;">Driving Passions:
+													<ul>
+													<li>Mastering Big Data technologies.</li>
+													<li>Building end-to-end data solutions.</li>
+													<li>Developing machine learning models to solve real-world problems.</li>
+													</ul>
+												</li>
+												<li>Previous experience:
+													<ul>
+													<li>Software Development.</li>
+													<li>Data Analysis.</li>
+													<li>Database Administration.</li>
+													</ul>
+												</li>
 												
 											</ul>
 										</p>
 										<ul class="actions">
-											<li><a href="#" class="button big"> More About Me </a></li>
+											<li><a href="more_about_me.html" class="button big"> More About Me </a></li>
+											<li><a href="#" class="button big"> CV </a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -62,191 +71,226 @@
 									</span>
 								</section>
 
-							<!-- Section -->
-								<section>
+							<!-- Project Section -->
+								
+							<section>
 								<header class="major">
-									<h2>Skills</h2>
+									<h2>Main Projects</h2>
 								</header>
-								<table style="background-color:white;">
+
+								<!-- Six main projects, two per row -->
+								<table style="width:100%; background-color:white; table-layout:fixed; border-collapse:separate; border-spacing:12px;">
 									<tr style="background-color:white; border: none;">
-										<td>
-											<article>
-												<img src="images/python-logo-only.png" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Python</h3>
-													<p>Developing with Python since 2017.</p>
-												</div>
+										<td style="vertical-align:top; padding:12px; width:50%;">
+											<article style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+												<a href="https://github.com/EnriqManComp/LA_crime_project" class="image"><img src="images/projects/LAPD Crime Data Analysis.webp" alt="LAPD Crime Analysis" style="width:100%; height:200px; object-fit:cover;" /></a>
+												<h3>Los Angeles Crime Analysis</h3>
+												<p><strong>Stack:</strong> SQL · Tableau · Python · Data Engineering</p>
+												<p>End-to-end analysis of LAPD crime records to detect hotspots, temporal trends and support interactive dashboards for law enforcement insights.</p>
+												<ul class="actions">
+													<li><a href="https://github.com/EnriqManComp/LA_crime_project" class="button">Project</a></li>
+													<li><a href="https://public.tableau.com/app/profile/enrique.manuel.companioni.valle/viz/TrackingBoardofCrimeRecords2010-2019/TrackingBoardofCrimeRecords" class="button">Dashboard</a></li>
+												</ul>
 											</article>
 										</td>
-										<td>
-											<article>
-												<img src="images/Data Analysis.gif" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Data Analysis</h3>
-													<p>Transforming raw data into meaningful insights since 2021.</p>
-												</div>
+
+										<td style="vertical-align:top; padding:12px; width:50%;">
+											<article style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+												<a href="https://github.com/EnriqManComp/Mango-Leaf-Disease-Classification/blob/1e17041902e85e8a454297fc6524ce8336928ad4/mango-leaf-disease-classification.ipynb" class="image"><img src="images/projects/Mango leaf Disease.png" alt="Mango Leaf Disease" style="width:100%; height:200px; object-fit:cover;" /></a>
+												<h3>Mango Leaf Disease Classification</h3>
+												<p><strong>Stack:</strong> CNN · Transfer Learning · Grad-CAM · OpenCV</p>
+												<p>Multiclass disease classifier for mango leaves using CNNs, explainability (Grad-CAM) and feature extraction techniques to support agricultural diagnostics.</p>
+												<ul class="actions">
+													<li><a href="https://github.com/EnriqManComp/Mango-Leaf-Disease-Classification/blob/1e17041902e85e8a454297fc6524ce8336928ad4/mango-leaf-disease-classification.ipynb" class="button">Notebook</a></li>
+												</ul>
 											</article>
 										</td>
 									</tr>
+
 									<tr style="background-color:white; border: none;">
-										<td>
-											<article>
-												<img src="images/database-settings.png" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Database Management</h3>
-													<p>Proficient with SQL databases since 2021 and NoSQL since 2023.</p>
-												</div>
+										<td style="vertical-align:top; padding:12px;">
+											<article style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+												<a href="https://www.kaggle.com/code/enriquecompanioni/dog-breed-classification-using-resnet-inceptionv3" class="image"><img src="images/dog breed classification.jpg" alt="Dog Breed Classification" style="width:100%; height:200px; object-fit:cover;" /></a>
+												<h3>Dog Breed Classification (ResNet · InceptionV3)</h3>
+												<p><strong>Stack:</strong> Transfer Learning · PyTorch/TensorFlow · Image Augmentation</p>
+												<p>Hybrid approach using pretrained architectures to extract robust features and build a high-performing breed classifier — includes experimentation notebooks and model comparison.</p>
+												<ul class="actions">
+													<li><a href="https://www.kaggle.com/code/enriquecompanioni/dog-breed-classification-using-resnet-inceptionv3" class="button">Notebook</a></li>
+												</ul>
 											</article>
 										</td>
-										<td>
-											<article>
-												<img src="images/deep-learning.png" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Machine Learning</h3>
-													<p>Building machine learning models and applications to address real-world problems since 2023.</p>
-												</div>
+
+										<td style="vertical-align:top; padding:12px;">
+											<article style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+												<a href="#" class="image"><img src="images/projects/real-estate-data-warehouse.png" alt="Real Estate Data Warehouse" style="width:100%; height:200px; object-fit:cover;" /></a>
+												<h3>Real Estate Data Warehouse & ETL</h3>
+												<p><strong>Stack:</strong> Postgres / Redshift · Airflow · Python ETL</p>
+												<p>Design and implementation of a data warehouse for real-estate sales (raw -> staging -> analytics). Includes schema design, ingestion pipelines and data quality checks.</p>
+												<ul class="actions">
+													<li><a href="#" class="button">Project</a></li>
+												</ul>
 											</article>
 										</td>
 									</tr>
+
 									<tr style="background-color:white; border: none;">
-										<td>
+										<td style="vertical-align:top; padding:12px;">
 											<article>
-												<img src="images/quantum-computer.png" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Computer Science</h3>
-													<p>Leveraging core computer science principles to enhance development efficiency and scalability since 2023.</p>
-												</div>
+												<a href="#" class="image"><img src="images/projects/pursuit_evasion.png" alt="Pursuit-Evasion RL" style="width:100%; max-width:320px; height:auto;" /></a>
+												<h3>Pursuit–Evasion (Reinforcement Learning Thesis)</h3>
+												<p><strong>Stack:</strong> PPO · PyTorch · Pygame · Multi-agent RL</p>
+												<p>Master's thesis project: simulation environment in Pygame and training multi-agent policies with PPO to study pursuit–evasion strategies and agent coordination.</p>
+												<ul class="actions">
+													<li><a href="#" class="button">Repository</a></li>
+												</ul>
 											</article>
 										</td>
-										<td>
+
+										<td style="vertical-align:top; padding:12px;">
 											<article>
-												<img src="images/tableau.png" width="80" height="80" style="margin-right: 20px;">
-												<div class="content">
-													<h3>Tableau</h3>
-													<p>Creating dynamic dashboards and data visualizations to enhance decision-making processes since 2023.</p>
-												</div>
+												<a href="#" class="image"><img src="images/projects/bank_deposit.png" alt="Bank Term Deposit Prediction" style="width:100%; max-width:320px; height:auto;" /></a>
+												<h3>Bank Term Deposit Subscription Prediction</h3>
+												<p><strong>Stack:</strong> Feature Engineering · XGBoost · Model Evaluation</p>
+												<p>Kaggle-style project predicting bank term deposit subscription — focuses on feature engineering, model selection and business-focused evaluation metrics.</p>
+												<ul class="actions">
+													<li><a href="#" class="button">More</a></li>
+												</ul>
 											</article>
+										</td>
+									</tr>
+								</table>
+							
+							<div style="text-align: center;">
+								<a href="#" class="button big"> More Projects </a>
+							</div>
+							</section>
+
+							<!-- Technologies Section -->
+							<section style="background-color: #f7f7f7; padding: 2em 0; margin: 2em 0; border-radius: 6px;">
+								<header class="major" style="padding-left: 2em; padding-right: 2em;">
+									<h2>Technologies</h2>
+								</header>
+
+								<table style="width:100%; border-collapse: collapse; border-spacing: 0; background-color: transparent;">
+									
+									<tr style="background-color:transparent; vertical-align: top;">
+										
+										<td style="width: 50%; padding: 0 2em;">
+
+											<div style="margin-bottom: 25px;">
+												<h3 style="margin: 0; font-size: 1.1em; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Languages</h3>
+												<div style="display: flex; flex-wrap: wrap; gap: 15px 20px; padding-top: 10px;">
+													<div style="text-align: center;">
+														<img src="images/skills/Python.png" width="40" height="40" alt="Python" title="Python" 
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/postgres.png" width="40" height="40" alt="Postgres / SQL" title="Postgres / SQL" 
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+												</div>
+											</div>
+
+											<div style="margin-bottom: 25px;">
+												<h3 style="margin: 0; font-size: 1.1em; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 5px;">DevOps & Version Control</h3>
+												<div style="display: flex; flex-wrap: wrap; gap: 15px 20px; padding-top: 10px;">
+													<div style="text-align: center;">
+														<img src="images/skills/github-mark.png" width="40" height="40" alt="GitHub" title="GitHub"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/docker-mark-blue.png" width="40" height="40" alt="Docker" title="Docker"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+												</div>
+											</div>
+
+										</td>
+
+										<td style="width: 50%; padding: 0 2em;">
+
+											<div style="margin-bottom: 25px;">
+												<h3 style="margin: 0; font-size: 1.1em; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Data Engineering</h3>
+												<div style="display: flex; flex-wrap: wrap; gap: 15px 20px; padding-top: 10px;">
+													<div style="text-align: center;">
+														<img src="images/skills/Apache Spark.png" width="40" height="40" alt="Apache Spark" title="Apache Spark"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/Apache Kafka.png" width="40" height="40" alt="Apache Kafka" title="Apache Kafka"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/flink_squirrel_500.png" width="40" height="40" alt="Apache Flink" title="Apache Flink"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/Apache Airflow.png" width="40" height="40" alt="Apache Airflow" title="Apache Airflow"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+												</div>
+											</div>
+
+											<div style="margin-bottom: 25px;">
+												<h3 style="margin: 0; font-size: 1.1em; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Business Intelligence</h3>
+												<div style="display: flex; flex-wrap: wrap; gap: 15px 20px; padding-top: 10px;">
+													<div style="text-align: center;">
+														<img src="images/skills/icons8-tableau-software-512.png" width="40" height="40" alt="Tableau" title="Tableau"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+												</div>
+											</div>
+
+											<div style="margin-bottom: 25px;">
+												<h3 style="margin: 0; font-size: 1.1em; color: #444; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Data Science | Machine Learning</h3>
+												<div style="display: flex; flex-wrap: wrap; gap: 15px 20px; padding-top: 10px;">
+													<div style="text-align: center;">
+														<img src="images/skills/Pandas.png" width="40" height="40" alt="Pandas" title="Pandas"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+													<div style="text-align: center;">
+														<img src="images/skills/PyTorch.png" width="40" height="40" alt="PyTorch" title="PyTorch"
+															style="transition: transform 0.2s ease-in-out;"
+															onmouseover="this.style.transform='scale(1.2)'"
+															onmouseout="this.style.transform='scale(1)'">
+													</div>
+												</div>
+											</div>
+
 										</td>
 									</tr>
 								</table>
 							</section>
 
 
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Main Projects</h2>
-									</header>
-
-									
-											<header>
-												<h3>Deep Learning Projects </h3>
-											</header>
-											<table>
-											
-											<tr style="background-color:white; border: none;">
-												<td>
-													<article>
-														<a href="https://github.com/EnriqManComp/Efficient-Automation-of-Recipe-Selection-Boosting-Traffic-with-Machine-Learning/blob/c25976e381fdfa7be844991908a6d7ad93ac4e41/efficient-automation-of-recipe-selection.ipynb" class="image"><img src="images/Recipe_Website_Image.png" alt="Recipe_Website" height="200" width="150" /></a>
-														<h3>High Traffic Classification of a Recipe Website </h3>
-														<p>Data Science | Data Analysis | Classification Problem </p>
-														<p>This project automates the recipe selection process to increase traffic on a fictional recipe website by implementing a machine learning solution. </p>
-														<ul class="actions">
-															<li><a href="https://github.com/EnriqManComp/Efficient-Automation-of-Recipe-Selection-Boosting-Traffic-with-Machine-Learning/blob/c25976e381fdfa7be844991908a6d7ad93ac4e41/efficient-automation-of-recipe-selection.ipynb" class="button">Project </a></li>
-														</ul>
-													</article>
-												</td>
-												<td>
-													<article>
-														<a href="#" class="image"><img src="images/projects/LAPD Crime Data Analysis.webp" alt="LAPD Crime Analysis" height="200" width="150" /></a>
-														<h3>Los Angeles Crime Analysis </h3>
-														<p> SQL | Data Analysis | Data Visualization | Tableau </p>
-														<p>With this project, we seek to identify trends, patterns, and high-risk areas to enhance law enforcement strategies, improve public safety measures, and provide comparative analyses of crime trends in other cities.</p>
-														<ul class="actions">
-															<li><a href="https://github.com/EnriqManComp/LA_crime_project" class="button"> Project </a></li>
-															<li><a href="https://public.tableau.com/app/profile/enrique.manuel.companioni.valle/viz/TrackingBoardofCrimeRecords2010-2019/TrackingBoardofCrimeRecords" class="button"> Dashboard </a></li>
-														</ul>
-													</article>
-												</td>									
-												
-												<td>
-													<article>
-														<a href="https://github.com/EnriqManComp/Mango-Leaf-Disease-Classification/blob/1e17041902e85e8a454297fc6524ce8336928ad4/mango-leaf-disease-classification.ipynb" class="image"><img src="images/projects/Mango leaf Disease.png" alt="Mango Leaf Disease" height="200" width="150" /></a>
-														<h3>Mango Leaf Disease Classification 🥭🍂 using CNN, grad-CAM, and Deep feature extraction + KNN/SVM</h3>
-														<p>Computer Vision | Machine Learning | Explainable AI | Problem Solving</p>
-														<p>This project aims to differentiate among various diseases (multiclass prediction) present in mango leaves. Different machine learning techniques were employed in this project to achieve optimal performance in a model capable of predicting multiple classes.</p>
-														<ul class="actions">
-															<li><a href="https://github.com/EnriqManComp/Mango-Leaf-Disease-Classification/blob/1e17041902e85e8a454297fc6524ce8336928ad4/mango-leaf-disease-classification.ipynb" class="button">More</a></li>
-														</ul>
-													</article>
-												</td>
-											</tr>
-											</table>
-
-											<header>
-												<h3> End to End Data Engineering Projects </h3>
-											</header>
-
-											<table>
-											<tr style="background-color:white; border: none;">
-												<td>
-													<article>
-														<a href="https://www.kaggle.com/code/enriquecompanioni/dog-breed-classification-using-resnet-inceptionv3" class="image"><img src="images/dog breed classification.jpg" height="200" width="150" /></a>
-														<h3>Dog Breed Clasification using ResNet and InceptionV3</h3>
-														<p> Deep Learning | Classification Problem </p>
-														<p>This notebook explores a hybrid approach for identifying dog breeds utilizing the feature extraction capabilities of Inception V3 and ResNet50 pretrained models.</p>
-														<ul class="actions">
-															<li><a href="https://www.kaggle.com/code/enriquecompanioni/dog-breed-classification-using-resnet-inceptionv3" class="button">More</a></li>
-														</ul>
-													</article>	
-												</td>
-
-												<td>
-													<article>
-														<a href="https://github.com/EnriqManComp/Autonomous-Path-Pilot-ROS-turtlebot3.git" class="image"><img src="images/path maintenance.gif" alt="path maintenance" height="200" width="150" /></a>
-														<h3>Autonomous Path Pilot</h3>
-														<p> Computer Vision | Robotics | Problem Solving </p>
-														<p>A robotic project to develop an autonomous path pilot using ROS and Turtlebot3 Waffle Pi.</p>
-														<ul class="actions">
-															<li><a href="https://github.com/EnriqManComp/Autonomous-Path-Pilot-ROS-turtlebot3.git" class="button">More</a></li>
-														</ul>
-													</article>
-
-												</td>
-
-											</tr>
-											</table>
-
-											<header>
-												<h3> Spark Projects </h3>
-											</header>
-											<table>
-
-											</table>
-
-											<header>
-												<h3> Databases Projects </h3>
-											</header>
-											<table>
-
-											</table>
-
-											<header>
-												<h3> Data Analytics Projects </h3>
-											</header>
-											<table>
-
-											</table>
-																				
-
-											
-										
-										
-									
-								</section>
-
 						</div>
 					</div>
+
+				
+
+
+
+					
 
 				<!-- Sidebar -->
 					<div id="sidebar">
@@ -258,34 +302,10 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="blog.html">Blog</a></li>
+										<li><a href="more_about_me.html">About Me</a></li>
+										<!-- <li><a href="blog.html">Blog</a></li> -->
 										<li><a href="projects.html">More Projects</a></li>
-										<!---
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-										--->
+										
 									</ul>
 								</nav>
 
