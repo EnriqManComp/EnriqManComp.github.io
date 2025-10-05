@@ -1,4 +1,11 @@
-- [ ] Add three column format to skills
-- [ ] Group the technical skills in logical order
-- [ ] Projects
-- [ ] Personal Picture 
+High Priority:
+
+- [ ] Whole Projects.
+- [ ] Personal Picture .
+
+Medium Priority: 
+
+- [ ] Add Tools to Education.
+- [ ] Certifications.
+
+Low Priority:
