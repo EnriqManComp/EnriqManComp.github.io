@@ -12,6 +12,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
+			<button class="scroll-up-button"> 
+				<i class="arrow-up"></i>
+			</button>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -397,6 +400,15 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				const btn = document.querySelector(".scroll-up-button");
+				btn.addEventListener("click", () => {
+					document.documentElement.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
+				});
+			</script>
 
 	</body>
 </html>
