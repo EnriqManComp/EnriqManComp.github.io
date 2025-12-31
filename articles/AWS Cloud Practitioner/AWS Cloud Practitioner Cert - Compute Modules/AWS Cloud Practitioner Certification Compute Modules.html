@@ -1,0 +1,736 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AWS Cloud Practitioner Certification: Compute Modules</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2accbafa-d2df-8030-aa4d-d7e12e7a22b5" class="page sans"><header><h1 class="page-title" dir="auto">AWS Cloud Practitioner Certification: Compute Modules</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2d9cbafa-d2df-80bf-924e-c284c42bc6b9" class="">Client-Server Model</h2></div><div style="display:contents" dir="ltr"><figure id="2d9cbafa-d2df-8030-94d8-d0c61c524ab1" class="image"><a href="image.png"><img style="width:709.9625244140625px" src="image.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2d9cbafa-d2df-80d2-a582-f0469a7e0213" class="">Deployment Models</h2></div><div style="display:contents" dir="auto"><p id="2d9cbafa-d2df-8071-ade2-e8a899da0aec" class="">You can think as deployment models as:</p></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8093-a385-d8be26bbff7f" class="bulleted-list"><li style="list-style-type:disc">How can you integrate the cloud resources with the infrastructure of the client.</li></ul></div><div style="display:contents" dir="auto"><p id="2d9cbafa-d2df-80c5-abcb-cd9b7acf1483" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d9cbafa-d2df-8089-a4c1-c0e11301f997" class="image"><a href="image%201.png"><img style="width:709.9500122070312px" src="image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9cbafa-d2df-80ae-b7f9-c1ccb51779e2" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80fb-a32f-f7a9b5377cbc" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default"><mark class="highlight-blue_background">Cloud-based</mark></mark><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80d1-8132-c0060abc46c1" class="bulleted-list"><li style="list-style-type:circle">Run all parts of the app in the cloud.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8073-b8e4-cd7a9a568226" class="bulleted-list"><li style="list-style-type:circle">Migrate existing app entire to the cloud.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-801d-bc86-ed521c5eaaab" class="bulleted-list"><li style="list-style-type:circle">Design and build new apps in the cloud.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8033-ba6b-d0baab06e296" class="bulleted-list"><li style="list-style-type:circle">Use Cases:<div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80be-a6d5-dcd67d6ed081" class="bulleted-list"><li style="list-style-type:square">The clients don’t need full control over the infrastructure and data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-805d-9777-fbe15be6f584" class="bulleted-list"><li style="list-style-type:square">The workloads can run entirely in the cloud.  </li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8004-99a6-ff4543d95b54" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">On-premises (Private cloud)</mark><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8050-9341-c5b90dd3f67f" class="bulleted-list"><li style="list-style-type:circle">The first approach is the clients provide the infrastructure and AWS  provide the software layer. Case the clients want to run optimized apps and services instead of create legacy app.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-802f-9ba6-d987fc8178b3" class="bulleted-list"><li style="list-style-type:circle">The second approach is AWS literally provide real infrastructure to your site, but AWS still manages and updates it.<div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-807e-84e2-d13feb36a12c" class="bulleted-list"><li style="list-style-type:square">See AWS Outposts Family.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80f0-b020-f6aac8ef5bf7" class="bulleted-list"><li style="list-style-type:circle"><strong>Think as the clients have their own running infrastructure and they want to increase their resources and software services, but they want to keep the physical servers in site.</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8044-93d2-e30ba16693de" class="bulleted-list"><li style="list-style-type:circle"><strong>The client BUY and MANAGE hardware. Handle power, cooling, networking, backups, and disaster recovery.</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-802c-8b09-d24ae3a7f3d5" class="bulleted-list"><li style="list-style-type:circle">Use Cases:<div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80b2-9e89-c2efc02815f2" class="bulleted-list"><li style="list-style-type:square">Highly sensitive systems (e.g., certain government, finance, healthcare environments)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8023-b6c3-dab6a64c6ed4" class="bulleted-list"><li style="list-style-type:square">Legacy app tightly coupled to specific hardware.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-80ed-b740-f28e15934822" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Hybrid (AWS + On-Premise)</mark><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-805a-9c0f-cb070d61b0fb" class="bulleted-list"><li style="list-style-type:circle"><strong>Think as the clients want to run some workloads in their own infrastructure and others in AWS cloud servers., and often connect them so they work together.</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-8086-a1b9-ddf4e416aac7" class="bulleted-list"><li style="list-style-type:circle">Use Cases:<div style="display:contents" dir="auto"><ul id="2d9cbafa-d2df-800a-b2b1-c76f9db694a0" class="bulleted-list"><li style="list-style-type:square">Keep sensitive systems on-premise, and non-sensitive in the AWS servers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ea-aae7-defc140545dd" class="bulleted-list"><li style="list-style-type:square">Gradual cloud migration strategies.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8062-b53b-ff83ded803d4" class="bulleted-list"><li style="list-style-type:square">Improved disaster recovery and backup options.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ff-818c-cd6a9103baf9" class="bulleted-list"><li style="list-style-type:square">Seasonal workloads needing burst capacity.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-800f-9ef2-fb7c7ac212e3" class="bulleted-list"><li style="list-style-type:square">Keeping regulated data on-prem while running analytics in AWS. </li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-8007-9d7c-f81a391e9aef" class="">Benefits of using compute in the cloud</h2></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8012-b684-e439a3edb132" class="bulleted-list"><li style="list-style-type:disc">Buy, keep, and maintain physical servers can be expense. Using cloud computing resources you pay what you consume.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8071-af09-e46814f95761" class="bulleted-list"><li style="list-style-type:disc">Flexibility:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c2-871d-e61bcc7e9b9a" class="bulleted-list"><li style="list-style-type:circle">You don’t care about keep the infrastructure updated.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-801b-89d1-edb7d2fda729" class="bulleted-list"><li style="list-style-type:circle">You don’t need to add manually more resources if the apps need more.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80bf-9a2c-f3d6395fa4c9" class="bulleted-list"><li style="list-style-type:disc">Deploy apps to the customers quickly in any place with low latency.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-808c-a1b0-fef664713b8f" class="bulleted-list"><li style="list-style-type:disc">The points before lead to scale your business.</li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8017-b696-fd5562869f63" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-80ef-a71b-faf4dffcba77" class="">AWS services to provide cloud computing</h2></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-807e-970b-d9ab36b8ee9f" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80b4-8d92-ee184d65c400" class="image"><a href="image%202.png"><img style="width:709.9874877929688px" src="image%202.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2dacbafa-d2df-807a-872a-ea1f5f90acab" class="">Amazon Elastic Compute Cloud (Amazon EC2)</h3></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80f8-ba3f-fcf04260bb43" class="bulleted-list"><li style="list-style-type:disc">It’s a virtual server with computing resources associated to it.</li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8057-b27c-e5ef2f938b37" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80bc-8441-eb2afaad2c01" class=""><mark class="highlight-yellow_background">Types of Amazon EC2 instances</mark></p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80e3-889d-e90d40732a5d" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-807c-bebc-dcce804ba6d7" class="image"><a href="image%203.png"><img style="width:540px" src="image%203.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8014-9bb7-ccf6a127e2ac" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-803a-b15f-dad6706002f1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">General purpose instances</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80cb-a4d3-f694e0a518a8" class="bulleted-list"><li style="list-style-type:circle">Good balance between compute, memory, storage, and network resources.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8098-bea8-c50cd5e94b0c" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80fc-9f72-f7769ade65cb" class="bulleted-list"><li style="list-style-type:square">App servers</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8036-b05a-d53a99eb650d" class="bulleted-list"><li style="list-style-type:square">Gaming servers</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8055-be21-d2c94d49dcf2" class="bulleted-list"><li style="list-style-type:square">Backend servers for enterprise apps</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80e7-995f-ebcc8971055b" class="bulleted-list"><li style="list-style-type:square">Small and medium databases.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80f7-8b08-cfb3a8704528" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Compute optimized instances</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8047-b3ea-dd05b002cc8c" class="bulleted-list"><li style="list-style-type:circle">Idead for high demanding CPUs apps.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80bc-8f4d-e9aeb61cb3fe" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ac-b4a8-dadf4b5b4e0d" class="bulleted-list"><li style="list-style-type:square">High-performance web servers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-807f-b0a4-d73226cfe7ff" class="bulleted-list"><li style="list-style-type:square">Compute intensive app servers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c6-9522-d005e2132cc7" class="bulleted-list"><li style="list-style-type:square">Dedicated gaming servers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8012-bb18-e295d416a6cf" class="bulleted-list"><li style="list-style-type:square">Batch processing workloads.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8056-882f-c54c4af0f5e9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Memory optimized instances</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-804b-9ca6-e8c384a6836f" class="bulleted-list"><li style="list-style-type:circle">High RAM capacity instances.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80a2-a373-cc00cde6530c" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ec-b18e-d0ed4e216c74" class="bulleted-list"><li style="list-style-type:square">Process large datasets.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80e1-b653-eb46ae122650" class="bulleted-list"><li style="list-style-type:square">Real time processing of a large amount of unstructured data.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8026-8062-cd1e782817a9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Storage optimized instances</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80fb-aae7-e28f9c3515a7" class="bulleted-list"><li style="list-style-type:circle">Designed for workloads that demands high, sequential read and write access to large datasets on local storage.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8043-8369-fa60d9200f0f" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c7-a1bd-c3ab0ecc98da" class="bulleted-list"><li style="list-style-type:square">Data warehousing apps.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80b5-81b3-e506961d565e" class="bulleted-list"><li style="list-style-type:square">High frequency online transaction processing (OLTP) systems.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-805b-a88f-da39e478ee6a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Accelerated computing instances</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8020-9ff9-d1103cca3bf1" class="bulleted-list"><li style="list-style-type:circle">Use hardware accelerators, coprocessors, or GPUs to perform some functions more efficiently than is possible in software running on CPUs.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ad-8a65-fa7a34487ec8" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80d7-83d3-d0eeed049cce" class="bulleted-list"><li style="list-style-type:square">Graphic processing.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8096-b327-f04a3e56c40e" class="bulleted-list"><li style="list-style-type:square">Floating-point calculations.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-805b-abb7-f92e9acd64e1" class="bulleted-list"><li style="list-style-type:square">Data pattern matching.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80b4-b3c0-db001ca265e5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80ad-8db2-cff9fddbd782" class=""><mark class="highlight-brown_background">Pricing</mark></p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8063-8940-d82bfb964153" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80dc-85d9-fc3bb1652ee1" class=""><mark class="highlight-yellow_background">Main principle → PAY-AS-YOU-GO</mark></p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8050-8f3e-ca1ed9cfa790" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80f2-b40d-ee336d633cd8" class="image"><a href="image%204.png"><img style="width:709.9874877929688px" src="image%204.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80a7-9d82-cc0c90cab562" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">On-demand:</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8032-b01a-f7166347e67a" class="bulleted-list"><li style="list-style-type:circle">The instance don’t stop until you stop it.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8091-bfea-ff1579fd9895" class="bulleted-list"><li style="list-style-type:circle">Pay only the compute time you use.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8098-aa23-c2ed5df4441f" class="bulleted-list"><li style="list-style-type:circle">Ideal for short terms.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ce-a2a3-dfe88c76d02a" class="bulleted-list"><li style="list-style-type:disc"> <mark class="highlight-blue_background">Reserved Instances:</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-802b-a7ce-e84a509a7c15" class="bulleted-list"><li style="list-style-type:circle">You purchase a/a group of instances for 1-year or 3-year term.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8050-a1e3-cd662c61515d" class="bulleted-list"><li style="list-style-type:circle">There are 2 types:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c4-8487-e2efffd7b687" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-blue_background">Standard Reserved Instances: </mark>Good choice if you know:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80b4-a90c-ebf434373492" class="bulleted-list"><li style="list-style-type:disc"> Instance type.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8019-aa21-cfe0f18771dc" class="bulleted-list"><li style="list-style-type:disc">Instance size.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-805b-a7a8-dacb0d26ab35" class="bulleted-list"><li style="list-style-type:disc">The region to deploy the app.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8031-b690-d51b96603732" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-blue_background">Convertible Reserved Instances: </mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80d0-8f78-c2253fb06762" class="bulleted-list"><li style="list-style-type:disc">Good fit if you need to run the app in different Availability Zones or different instances types.</li></ul></div></li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8000-b457-c7bba9fa276f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Spot Instances:</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8007-9d77-f44f5a81340a" class="bulleted-list"><li style="list-style-type:circle">Ideal for workloads with flexible start and end times.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80b0-8423-d617445af99d" class="bulleted-list"><li style="list-style-type:circle">Used typically for background process without affecting the overall operations of your business.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8040-a485-f44ca83a1d06" class="bulleted-list"><li style="list-style-type:circle">Offer 90% discount of On-demand price.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-808f-80e9-efacf97278fe" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">Dedicated Hosts: </mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-804a-8e88-eb2cb905ad5c" class="bulleted-list"><li style="list-style-type:circle">Most expensive option.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8009-82d0-d7f6459b1fa3" class="bulleted-list"><li style="list-style-type:circle">Physical servers with Amazon EC2 instances that are fully dedicated to your use.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8048-908d-f1a1d63fd679" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-blue_background">EC2 Instance Saving Plan</mark>:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8088-ae8a-d9fdbed463c1" class="bulleted-list"><li style="list-style-type:circle">Provide a discount when you commit to make a hourly spend to an instance family and Region for a 1-year or 3-year term.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8015-8d3e-c58dd1082ed8" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-80c7-915f-c883e42aa561" class="">Scalability (Amazon EC2 Auto Scaling)</h2></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8050-82b1-eb94326d7032" class="bulleted-list"><li style="list-style-type:disc">Amazon EC2 Auto Scaling provide scalability for Amazon EC2 instances. Think as increase the number of instances while you app need it.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ec-865a-fa2243b5ef6a" class="bulleted-list"><li style="list-style-type:disc">You can use 2 approaches:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ba-9ef8-e82d59f241aa" class="bulleted-list"><li style="list-style-type:circle">Dynamic scaling: Responds to changing demand.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-808f-b8db-f0bb8770a1b9" class="bulleted-list"><li style="list-style-type:circle">Predictive scaling: Automatically schedules the right number of Amazon EC2 instances based on predicted demand.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-800a-8776-cb35bb784e78" class="bulleted-list"><li style="list-style-type:disc">You have to set the Auto Scaling Group. You set the following set up:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8072-9e62-c7b8c7a18534" class="bulleted-list"><li style="list-style-type:circle">Minimum: Number of instances that need your app to run.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8078-beff-e8fd4e661257" class="bulleted-list"><li style="list-style-type:circle">Desired: Number of instances that you want to use in your app.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8021-9dbc-f28fe8c7d088" class="bulleted-list"><li style="list-style-type:circle">Maximum: Number of instances that you reserve in case the app need more resources.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-804b-906c-d1a370b18f04" class="image"><a href="image%205.png"><img style="width:681px" src="image%205.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-803c-8cb9-c9f0c1a9dca0" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-80af-ad83-d7ec98ed4b25" class="">Elastic Load Balancing</h2></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8063-a1e3-ee0b0f9eb486" class="bulleted-list"><li style="list-style-type:disc">Service that automatically distribute the incoming traffic across multiple resources such as Amazon EC2.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-809f-b17f-f7e93d01af5a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background"><strong>Amazon EC2 assigns instances - Elastic Load Balancing distributes to the assigned instances.</strong></mark></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-802e-bb69-f49a06adb9c3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8035-a086-c6cae76e8827" class=""> </p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80e1-9070-c4f67f703af2" class="image"><a href="image%206.png"><img style="width:709.9874877929688px" src="image%206.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80e8-896e-ef9be0ae9456" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-8076-a366-f57b9c1d0761" class="image"><a href="image%207.png"><img style="width:709.9874877929688px" src="image%207.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80da-a90b-e0ac9d24b993" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-808e-8648-c26766be3433" class="">Messaging and Queuing</h2></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8053-b709-d0bf3e2906ba" class="">The apps can have two main architecture design:</p></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8020-a515-f7f06d9b7d8f" class="bulleted-list"><li style="list-style-type:disc">Tightly coupled architecture. <div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8082-9cc8-eff78bc97a81" class="bulleted-list"><li style="list-style-type:circle">When component A fail, component B also fail.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-801e-bfc9-ed5d20712102" class="bulleted-list"><li style="list-style-type:circle">Think as all the app in a single project.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80bb-870c-d7687ac05ea3" class="bulleted-list"><li style="list-style-type:circle">You don’t need to send messages to the app components through the infrastructure.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8005-9303-e6c3494e593a" class="bulleted-list"><li style="list-style-type:disc">Loosely coupled architecture.<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8063-8e4d-c58f7c1198dd" class="bulleted-list"><li style="list-style-type:circle">Think as microservices where each microservice has its own function.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8008-8176-d5c7522aee6f" class="bulleted-list"><li style="list-style-type:circle">So, if component A fail, component B don’t fail.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8062-b447-e53d5dc6f005" class="bulleted-list"><li style="list-style-type:circle">You need a message service to communicate the components.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80ac-9f64-dab3518cb7fb" class="">There are 2 AWS services to send messages and handling queues.<div class="indented"><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-803b-be16-c5cb72d271f7" class="bulleted-list"><li style="list-style-type:disc">Amazon SNS (Simple Queue Service)<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c3-90db-d5dc30af386b" class="bulleted-list"><li style="list-style-type:circle">It’s a publisher/subscriber service. More native way of send messages one side publish a message and the other side listen the message.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8003-baea-eaaf50a50232" class="bulleted-list"><li style="list-style-type:circle">You can loss messages, because there isn’t a buffer between.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8077-b08d-db9aed9bb362" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8026-86b4-f71c2c3483b8" class="bulleted-list"><li style="list-style-type:square">Web servers</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-802b-9983-c971babe8cb6" class="bulleted-list"><li style="list-style-type:square">AWS Lambda functions.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8045-b1f0-f71726124f35" class="bulleted-list"><li style="list-style-type:disc">Amazon SQS (Simple Notification Service)<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-801c-9ab4-fd9b405e0fe2" class="bulleted-list"><li style="list-style-type:circle">It’s a message queuing service.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80ff-a98e-f5337e599fab" class="bulleted-list"><li style="list-style-type:circle">You don’t loss messages because they wait in a buffer or queue.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-800c-aa75-d1860c0d8e64" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8049-9a9a-f38706f73e80" class=""> </p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80ac-9095-cbd36c62c843" class="image"><a href="image%208.png"><img style="width:685.9750366210938px" src="image%208.png"/></a></figure></div></div></p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80c9-9519-f763eabdd827" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dacbafa-d2df-80e5-8635-e7ddbbe1596c" class="">Serverless and Containers Solutions</h2></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8068-a5dd-e5e978a21101" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-8065-9e2a-e69fa8befb04" class=""><mark class="highlight-yellow_background">Serverless → Don’t care about managing the server </mark></p></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8052-82a7-f6f5bb221f67" class="bulleted-list"><li style="list-style-type:disc">With Amazon EC2 you need:<div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c4-82d5-cdc450201d8e" class="bulleted-list"><li style="list-style-type:circle">Virtual server + Code + Manage the instance.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8064-a4dd-e18a4093e017" class="bulleted-list"><li style="list-style-type:circle">No native serverless approach.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8087-b0a2-d1aacf0a9774" class="bulleted-list"><li style="list-style-type:disc">With serverless approach you need only the Code part or only need to focus on the product not the infrastructure.</li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80b7-8b1e-e72d806db1c9" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2dacbafa-d2df-80fd-b899-cddea9eb941e" class="">AWS Lambda</h3></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-805f-8549-c84aaedc17c2" class="bulleted-list"><li style="list-style-type:disc">It’s a service that lets you run code without worrying about managing the infrastructure. (serverless approach)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80b1-b15b-ebe8921eee43" class="bulleted-list"><li style="list-style-type:disc">How AWS Lambda work:</li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80bd-a2bd-d5c5c81df373" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80fb-89bb-c6ae329f852b" class="image"><a href="image%209.png"><img style="width:709.9625244140625px" src="image%209.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-803d-9a25-e79864698375" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2dacbafa-d2df-808f-b14f-cecc9876d428" class="">Containers</h3></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-806d-bcda-c4b77922ce42" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Amazon Elastic Container Service (Amazon ECS)</mark> <div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80c0-a49a-f9b89f2adc1c" class="bulleted-list"><li style="list-style-type:circle">Management system that allow build, run and scale containerized apps on AWS.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8009-ac8c-e23b696d7621" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">Amazon Elastic Kubernetes Service (Amazon EKS)</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80de-98d6-f490740d0b54" class="bulleted-list"><li style="list-style-type:circle">Management system to orchestrate containers on AWS. </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8090-b900-e476c6a94355" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow_background">AWS Fargate</mark><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-806f-997b-cd60f2f8263b" class="bulleted-list"><li style="list-style-type:circle">It’s a serverless compute engine for containers on Amazon ECS or Amazon EKS to run containerized apps without worrying about the server management or instance allocation.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-80c6-a624-f63e173f5263" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2dacbafa-d2df-80b5-afcb-cd58bc139517" class="">Summary</h1></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8061-969c-f58e12e50042" class="bulleted-list"><li style="list-style-type:disc">Your business can choose from 3 deployment models options. In any case, you will end up using AWS services.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-801b-aab9-debd0f699108" class="bulleted-list"><li style="list-style-type:disc">Depends of you business needs or the architecture of your apps you can use the CORE and add some necessary services.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-80e6-a1b8-c4555653321a" class="bulleted-list"><li style="list-style-type:disc">If your business needs or app scale maybe you need to add more services.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dacbafa-d2df-8008-9cf5-c7c73d77205b" class="bulleted-list"><li style="list-style-type:disc">If your business doesn’t need to worry about managing infrastructure, you can opt for a serverless approach.  </li></ul></div><div style="display:contents" dir="auto"><p id="2dacbafa-d2df-806a-9fa0-f4fa0c2c845f" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2dacbafa-d2df-80a3-b4fc-c5a849f6c572" class="image"><a href="image%2010.png"><img style="width:709.9874877929688px" src="image%2010.png"/></a></figure></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
