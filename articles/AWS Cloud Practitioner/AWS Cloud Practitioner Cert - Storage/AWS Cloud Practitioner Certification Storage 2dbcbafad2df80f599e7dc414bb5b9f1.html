@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AWS Cloud Practitioner Certification: Storage</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2dbcbafa-d2df-80f5-99e7-dc414bb5b9f1" class="page sans"><header><h1 class="page-title" dir="auto">AWS Cloud Practitioner Certification: Storage</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-80e3-a39a-fd5510130de8" class="">Amazon EC2 instance store</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-802a-8485-d2190d20662f" class="bulleted-list"><li style="list-style-type:disc">It’s not a standalone block storage → block-level storage that is physically attached to the EC2 instance host computer.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80e2-bdce-ee2ba3d520c5" class="bulleted-list"><li style="list-style-type:disc">The data is lost when an instance is stopped or terminated. (No data persistence concept)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80fe-988e-f7059e93ba9b" class="bulleted-list"><li style="list-style-type:disc">Use case:<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80bf-b0a0-d6cb8edd0e32" class="bulleted-list"><li style="list-style-type:circle">Temporary operations.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f5-9466-cca8741ccecd" class="bulleted-list"><li style="list-style-type:circle">Temporary memory like buffers, caches, and scratch data.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80bf-8242-c76bdd3549f7" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80e8-8058-eb3b54566666" class="bulleted-list"><li style="list-style-type:circle">Automatically available storage</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80e1-a236-fd9affdf1e26" class="bulleted-list"><li style="list-style-type:circle">Cost effective</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-801d-a262-d5db0d998618" class="bulleted-list"><li style="list-style-type:circle">High performance: extremely low-latency → high I/O performance ideal for fast processing.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-8044-9bd8-fe028b81d633" class="">Amazon Elastic Block Storage (Amazon EBS)</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f7-8512-ffe65d0b7e91" class="bulleted-list"><li style="list-style-type:disc">Block Storage outside of a EC2 instance. (data persistence concept)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8016-8162-da38ab5e8d55" class="bulleted-list"><li style="list-style-type:disc">Enables the creation of snapshot backups to prevent data loss.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a9-914f-d8119109a4af" class="bulleted-list"><li style="list-style-type:disc">You can manage the creation, retention, and deletion of EBS snapshots using Amazon Data Lifecycle Manager.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2dbcbafa-d2df-80d3-bb65-c0535568d9d2" class="image"><a href="image.png"><img style="width:709.9625244140625px" src="image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2dbcbafa-d2df-802d-9c50-c60b9c90fcad" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8079-8278-d0d71d4293dd" class="bulleted-list"><li style="list-style-type:disc">Use cases:<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8033-ad3b-cb6ff67f781e" class="bulleted-list"><li style="list-style-type:circle">Database hosting</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a1-a71e-ff7af6649776" class="bulleted-list"><li style="list-style-type:circle">Backup storage for apps</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80d0-a4ea-e1873eaa584a" class="bulleted-list"><li style="list-style-type:circle">Rapid deployment of development environments using volume snapshots.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-806b-ac6c-ec7e99f00156" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80fb-a470-d987cb42d6ef" class="bulleted-list"><li style="list-style-type:circle">Portability: It isn’t attach to a EC2 instance.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-809f-a129-c36a5ab1ac6d" class="bulleted-list"><li style="list-style-type:circle">Data migration: You can easily migrate the data to different AZs using the snapshots.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f1-8c12-da3ecb695285" class="bulleted-list"><li style="list-style-type:circle">Disaster recovery</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8064-bd8c-e0a35e9128bd" class="bulleted-list"><li style="list-style-type:circle">Cost optimization: You can adjust the size of the data to match actual usage patterns without downtime. </li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8066-a390-d1d1e6d349d3" class="bulleted-list"><li style="list-style-type:circle">Performance tuning: EBS offers various volume types to match different workload requirements and IOPS needs.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-8041-aad4-e31fa888ab5d" class="">Amazon Simple Storage Service (S3)</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c4-a173-e7b9ce93d36c" class="bulleted-list"><li style="list-style-type:disc">Store and retrieve an unlimited amount of data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8024-9210-eaa9b887030d" class="bulleted-list"><li style="list-style-type:disc">Object storage type.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80de-9dc4-dd5c5c85f724" class="bulleted-list"><li style="list-style-type:disc">Store objects in S3 buckets.<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8093-8adb-d81dadc6e9e8" class="bulleted-list"><li style="list-style-type:circle">Objects ⇒ the file.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80ca-a5e3-cfdc863a6ba9" class="bulleted-list"><li style="list-style-type:circle">S3 buckets ⇒ the directory.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8027-843a-e61c94858e44" class="bulleted-list"><li style="list-style-type:disc">Maximum object size of 5 TB</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8057-a9ab-dd09d8f2fe14" class="bulleted-list"><li style="list-style-type:disc">Fully managed.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8042-9902-da456da7e400" class="bulleted-list"><li style="list-style-type:disc">Offers 99.999… percent durability. (highly protected against loss).</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-800d-a896-d96f5defb256" class="bulleted-list"><li style="list-style-type:disc">Offers lifecycle management, versioning, and various storage classes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c3-94cd-c99d25be364f" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b6-a907-cb1ea1606440" class="bulleted-list"><li style="list-style-type:circle">Virtually unlimited storage.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8014-b433-efdb2b94412c" class="bulleted-list"><li style="list-style-type:circle">Object lifecycle management. (S3 Lifecycle)<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8061-a0ca-f1eec9949d2f" class="bulleted-list"><li style="list-style-type:square">Automate two actions<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c0-8bef-da0f723959bb" class="bulleted-list"><li style="list-style-type:disc">Transition actions: when objects should transition to another storage class.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80ca-81f5-c8490acfef06" class="bulleted-list"><li style="list-style-type:disc">Expiration actions: when objects expire and should be permanently deleted.</li></ul></div></li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8027-b871-ed8ea5ec804c" class="bulleted-list"><li style="list-style-type:disc">Use cases<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b3-91a9-caecdef853ab" class="bulleted-list"><li style="list-style-type:circle">Content distribution</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8012-acb5-d55bdfea437e" class="bulleted-list"><li style="list-style-type:circle">Hosting static websites.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-800b-b49d-f0b5902e5763" class="bulleted-list"><li style="list-style-type:circle">Delivering media files.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8030-87c1-d6d3542c78db" class="bulleted-list"><li style="list-style-type:circle">App data storage.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c1-a58d-c8179e7f13fc" class="bulleted-list"><li style="list-style-type:circle">Archiving.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-806a-865f-c3c2e664afc6" class="bulleted-list"><li style="list-style-type:circle">Data lakes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8014-ba2e-ff6b97c2112d" class="bulleted-list"><li style="list-style-type:circle">Compliance-driven data retention. (Data must retained due to enterprise standards, laws, etc…)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2dbcbafa-d2df-8034-9746-ff9e3b20f9cf" class="">S3 Tiers</h3></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8085-a124-ef8ab67ab537" class="bulleted-list"><li style="list-style-type:disc">S3 Standard<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8095-a629-dff748bc7ad7" class="bulleted-list"><li style="list-style-type:circle">General purpose use.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c6-aa58-eca98745a6e9" class="bulleted-list"><li style="list-style-type:circle">Default option.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-806a-a4ae-f2e182bdc7c3" class="bulleted-list"><li style="list-style-type:disc">S3 Intelligent-Tiering<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a2-8ab6-f3c17f250dfe" class="bulleted-list"><li style="list-style-type:circle">Useful when data has unknown or changing access patterns.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-809a-a2e3-fe74f77de388" class="bulleted-list"><li style="list-style-type:circle">Stores objects in 3 tiers:<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-801a-b38b-eddb83b173c7" class="bulleted-list"><li style="list-style-type:square">Frequent access tier. (frequently access)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8041-874f-d11ad21f5172" class="bulleted-list"><li style="list-style-type:square">Infrequent access tier. (unfrequently access)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a8-b655-ebcd70f10e7b" class="bulleted-list"><li style="list-style-type:square">Archive instant access tier. (archiving data and access require time)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-800d-be43-ed6e9af06786" class="bulleted-list"><li style="list-style-type:circle">The data is moved among the 3 tier based on frequency of access.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8038-bfce-fe39b9e621df" class="bulleted-list"><li style="list-style-type:disc">S3 Standard Infrequent Access (Standard IA)<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80ac-b87f-e16a2706d35e" class="bulleted-list"><li style="list-style-type:circle">Infrequent data but requires rapid access when needed.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f4-aab2-ffb7eacee8a7" class="bulleted-list"><li style="list-style-type:circle">High throughput compared with S3 Standard.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8089-86e1-c729491072ff" class="bulleted-list"><li style="list-style-type:circle">Low latency compared with S3 Standard.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8049-924d-c1a2544e54ca" class="bulleted-list"><li style="list-style-type:circle">Low per-GiB storage price</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8051-87b9-d7e336a76d9b" class="bulleted-list"><li style="list-style-type:circle">Low per-GiB retrieval fee.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8049-997b-e14d13708aea" class="bulleted-list"><li style="list-style-type:circle">Use case:<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-802a-89dd-c7d2c2793c4b" class="bulleted-list"><li style="list-style-type:square">Store long-term backups.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-808a-80d1-c4a756648d0a" class="bulleted-list"><li style="list-style-type:square">Disaster recovery files.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8012-aba6-ebcd21513886" class="bulleted-list"><li style="list-style-type:square">Others.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80ca-9240-eb9fee5ebb52" class="bulleted-list"><li style="list-style-type:disc">S3 One Zone Infrequent Access (One Zone-IA)<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8088-8e78-ee02bf16af5e" class="bulleted-list"><li style="list-style-type:circle">Store data in a single AZ.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8049-9942-de28f13c8e2a" class="bulleted-list"><li style="list-style-type:circle">Reduced cost compared with S3 Standard IA, which use 3 AZs.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8012-b8be-f9d284164362" class="bulleted-list"><li style="list-style-type:circle">Use cases<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8000-9eeb-d1fe5c3bc1b4" class="bulleted-list"><li style="list-style-type:square">Customers need infrequent access without high availability.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80d4-a87e-cba83064d65b" class="bulleted-list"><li style="list-style-type:square">Storing secondary backups. </li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80de-8d52-f66d33971ced" class="bulleted-list"><li style="list-style-type:disc">S3 Express One Zone<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80aa-b00c-cb954d68f3a1" class="bulleted-list"><li style="list-style-type:circle">Store data in a single AZ.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8007-aad0-fde02d0632c2" class="bulleted-list"><li style="list-style-type:circle">Designed to deliver very fast access for your most frequently accessed data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f0-ac7f-f3136cb577b3" class="bulleted-list"><li style="list-style-type:circle">Up to 10x faster than S3 Standard.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8068-9c8a-e5c8529ae207" class="bulleted-list"><li style="list-style-type:circle">Requests cost up to 80% lower than S3 Standard</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80be-93dd-f4282c483698" class="bulleted-list"><li style="list-style-type:circle">Use cases:<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8038-b6d1-df5d0706203f" class="bulleted-list"><li style="list-style-type:square">Latency-sensitive apps.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80cf-9434-d415672c3310" class="bulleted-list"><li style="list-style-type:disc">S3 Glacier Instant Retrieval<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8009-82e8-c3f5684e3b96" class="bulleted-list"><li style="list-style-type:circle">Used for archiving data + fast retrieval.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80db-ae03-ce2dd3238d04" class="bulleted-list"><li style="list-style-type:circle">Cost saving up to 68% compared with S3 Standard IA archive tier.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-801d-a336-c55fa64c47a9" class="bulleted-list"><li style="list-style-type:circle">Same latency and throughput performance than S3 Standard IA.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-808a-8fa7-cac607104175" class="bulleted-list"><li style="list-style-type:disc">S3 Glacier Flexible Retrieval<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8040-b8af-e39bc7ad9006" class="bulleted-list"><li style="list-style-type:circle">Low-cost storage for archived data accessed 1-2 times per year.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8039-9663-c7dcaabb8fca" class="bulleted-list"><li style="list-style-type:circle">Data retrieval can be done in 1-5 minutes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-807d-ba89-f4f092ffb0f1" class="bulleted-list"><li style="list-style-type:circle">You can request bulk retrieval in up to 5-12 hours without additional costs.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8081-8e32-c085ad5685d5" class="bulleted-list"><li style="list-style-type:circle">Use cases<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-807f-abf6-f67669b1ace8" class="bulleted-list"><li style="list-style-type:square">Backups</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-804a-9edc-e6353d6b6e25" class="bulleted-list"><li style="list-style-type:square">Disaster recovery</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-807a-bcba-cb57edfdb399" class="bulleted-list"><li style="list-style-type:square">Some data occasionally must be retrieved in minutes.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c3-b22d-f2846cb32acc" class="bulleted-list"><li style="list-style-type:disc">S3 Glacier Deep Archive<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a9-b073-c6e691f6c98b" class="bulleted-list"><li style="list-style-type:circle">Lowest-cost of all S3 storage classes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80fe-826e-c0adb7460189" class="bulleted-list"><li style="list-style-type:circle">Support long-term retention.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f0-aea5-f691b55e4784" class="bulleted-list"><li style="list-style-type:circle">Default retrieval time of 12 hours.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b8-be60-e548618728df" class="bulleted-list"><li style="list-style-type:circle">Designed to retain datasets for 7-10 years or longer.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80d9-baef-d75f5e9b5ab6" class="bulleted-list"><li style="list-style-type:circle">Use cases<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-800b-9eb8-fe78fded662b" class="bulleted-list"><li style="list-style-type:square">Financial services</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8010-8af2-c7cf812bfcd5" class="bulleted-list"><li style="list-style-type:square">Healthcare</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8078-861f-ffd9e0174046" class="bulleted-list"><li style="list-style-type:square">Public sector</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80fc-bc79-fa5b81c40bfc" class="bulleted-list"><li style="list-style-type:square">Any industry with highly compliance requirements.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-80ed-9e44-d75e538a1862" class="">S3 Outposts</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8020-b784-ff635870e1f9" class="bulleted-list"><li style="list-style-type:disc">Delivers object storage to your on-premises AWS Outposts environment.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80bf-8eed-fbef6c2eeae3" class="bulleted-list"><li style="list-style-type:disc">Use Amazon S3 APIs and features.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b0-8ca8-dfd1002282c5" class="bulleted-list"><li style="list-style-type:disc">Helps maintain optimal performance.</li></ul></div><div style="display:contents" dir="auto"><p id="2dbcbafa-d2df-8011-9ba1-c10011cf0715" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-8090-bf71-f4b6988f911a" class="">Amazon Elastic File System (EFS)</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8010-b8bc-cf67f9ab2778" class="bulleted-list"><li style="list-style-type:disc">Fully managed</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f7-9d18-c6eb398eef83" class="bulleted-list"><li style="list-style-type:disc">Used for hybrid approach (on-premise + AWS cloud services)</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a2-8422-ccf5030ca8be" class="bulleted-list"><li style="list-style-type:disc">Use Linux Network File System (NFS) protocol.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-805b-b787-d2d02f7a4595" class="bulleted-list"><li style="list-style-type:disc">Automatically scale to petabytes as you add or remove files without disrupting apps.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8034-9a16-ffeec56693ad" class="bulleted-list"><li style="list-style-type:disc">Can be access by multiple EC2 instances, apps, users, etc.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80a6-987b-fc8f8bed85c1" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80d2-8faf-f796654f30e6" class="bulleted-list"><li style="list-style-type:circle">Multi-AZ redundancy</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-807e-b325-e0354462950c" class="bulleted-list"><li style="list-style-type:circle">Shared access</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80e6-b2e0-f79fc2a0b063" class="bulleted-list"><li style="list-style-type:circle">Elastic (flexible, grow and shrink,..) storage</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80d9-9fa4-ea4731feb598" class="bulleted-list"><li style="list-style-type:circle">Offers EFS data lifecycle management.<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-804f-9bc1-f2db619ce319" class="bulleted-list"><li style="list-style-type:square">You can move data between storage classes on usage pattern.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-801f-9bc1-dc96454c1cb1" class="bulleted-list"><li style="list-style-type:square">You can create lifecycle policies.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2dbcbafa-d2df-8058-95e6-ee976b0bf0f4" class="">Amazon EFS storage classes</h3></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b3-ad15-cb21ca765716" class="bulleted-list"><li style="list-style-type:disc">Standard storage classes<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f8-818e-ee8e3315502f" class="bulleted-list"><li style="list-style-type:circle">EFS Standard</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8017-b192-c3ab13efe899" class="bulleted-list"><li style="list-style-type:circle">EFS Standard Infrequent Access (Standard IA)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8048-9655-f2ff529c6d63" class="bulleted-list"><li style="list-style-type:disc">One zone storage classes<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80f7-a65a-d712014766ff" class="bulleted-list"><li style="list-style-type:circle">EFS One Zone</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-803f-b696-d29bc218c81a" class="bulleted-list"><li style="list-style-type:circle">EFS One Zone-IA</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8039-af02-cedb109c6726" class="bulleted-list"><li style="list-style-type:disc">Archive storage classes<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-806b-8f9b-fd8d3b1185df" class="bulleted-list"><li style="list-style-type:circle">EFS Archive</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2dbcbafa-d2df-80ef-8f52-fef7e79b0223" class="">Lifecycle policies</h3></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80cc-b53e-ffc523fbd879" class="bulleted-list"><li style="list-style-type:disc">Standard to IA ⇒ data with 30 days without access.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8022-9fd5-cc9ad83a1229" class="bulleted-list"><li style="list-style-type:disc">IA to Archive ⇒  data with 90 days without access.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-8054-bafe-eaba81c064f0" class="bulleted-list"><li style="list-style-type:disc">IA/Archive to Standard ⇒ You need to set a policy to this transition. By default, files are not moved back to Standard storage.</li></ul></div><div style="display:contents" dir="auto"><h2 id="2dbcbafa-d2df-8006-ac85-d66f8b63cc0f" class="">Amazon FSx</h2></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-802d-88e5-d6d5e5238641" class="bulleted-list"><li style="list-style-type:disc">EFS focus on NFS → FSx works with many file system protocols<div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80b4-86a6-da65751658d4" class="bulleted-list"><li style="list-style-type:circle">Windows File Server</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80c4-a13c-c0be0d289d17" class="bulleted-list"><li style="list-style-type:circle">OpenZFS</li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80fe-8df5-e82a1723724c" class="bulleted-list"><li style="list-style-type:circle">NetAPP ONTAP</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dbcbafa-d2df-80ea-b00c-ea79539fe2ad" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-801d-b8ea-c6d7b13ffbff" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-yellow_background">File system integration</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80e7-8a5e-c499961375b8" class="bulleted-list"><li style="list-style-type:circle">Manage infrastructure</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-801a-9488-fef736c546ac" class="bulleted-list"><li style="list-style-type:circle">Scalable storage</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80cb-b197-ed1608f337e8" class="bulleted-list"><li style="list-style-type:circle">Cost effective</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2dccbafa-d2df-8087-8d36-edb23b54680f" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2dccbafa-d2df-8030-8a94-f571ddcf40e8" class="">Additional storage services</h2></div><div style="display:contents" dir="auto"><h3 id="2dccbafa-d2df-8075-8ad2-f97c326a85b7" class="">AWS Storage Gateway</h3></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80c8-9598-e852df85270f" class="bulleted-list"><li style="list-style-type:disc">It’s the gap between traditional infrastructure and the cloud</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80b2-bb5a-c042eab79b1d" class="bulleted-list"><li style="list-style-type:disc">So, it’s a hybrid cloud storage service.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-807a-9ad6-f9f2bc911687" class="bulleted-list"><li style="list-style-type:disc">Benefits<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8095-a7a0-fde1b08587a8" class="bulleted-list"><li style="list-style-type:circle">Seamless integration.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-801d-98d2-e45f935fa5f8" class="bulleted-list"><li style="list-style-type:circle">Improved data management.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80b0-8800-e6e02fa6a4dc" class="bulleted-list"><li style="list-style-type:circle">Local caching: Keeps frequently accessed data for quick access while less used data in the cloud.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80ef-b233-fa4ac460ddc2" class="bulleted-list"><li style="list-style-type:circle">Cost optimization</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80ac-933b-e5af805587e1" class="bulleted-list"><li style="list-style-type:disc">Gateway types<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8008-8f1f-e2156e41ba27" class="bulleted-list"><li style="list-style-type:circle">Amazon S3 File Gateway.<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8091-bca0-f1d2970e3498" class="bulleted-list"><li style="list-style-type:square">Keep working with local files while the actual data is securely stored in the AWS Cloud.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80a2-a0df-d595b426e998" class="bulleted-list"><li style="list-style-type:circle">Volume Gateway<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8057-8068-d24c5f6d6a73" class="bulleted-list"><li style="list-style-type:square">Create virtual storage while keep local access to your data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80fe-8e59-c9aa787495d6" class="bulleted-list"><li style="list-style-type:square">The cloud data is presenting as iSCSI volumes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-804e-a6ce-f2029c8bcda6" class="bulleted-list"><li style="list-style-type:square">Two types:<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80f3-9d20-d2a005148a4b" class="bulleted-list"><li style="list-style-type:disc">Cached volume mode: Primary data → Cloud, Most frequent → Local</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8078-b9c2-f598315ba451" class="bulleted-list"><li style="list-style-type:disc">Stored volume mode: complete dataset → local, backup as EBS snapshots → cloud</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8062-b31b-d46b64e754a3" class="bulleted-list"><li style="list-style-type:circle">Tape Gateway</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2dccbafa-d2df-8057-80ad-ea0a344a1f9a" class="">AWS Elastic Disaster Recovery</h3></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8097-aba8-d54c12e13b3d" class="bulleted-list"><li style="list-style-type:disc">Replicates critical workloads to AWS with minimal downtime.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8057-bd28-de9f5907a410" class="bulleted-list"><li style="list-style-type:disc">Your servers’ block-level data is continuously replicated to AWS.</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8047-b555-c5dd38c59fc2" class="bulleted-list"><li style="list-style-type:disc">Benefit<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8091-97cd-ce2c165d77f5" class="bulleted-list"><li style="list-style-type:circle">Business resilience</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8028-9d3f-d4c4e3787ba0" class="bulleted-list"><li style="list-style-type:circle">Streamlined disaster recovery </li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80ba-b862-c5d925a2a465" class="bulleted-list"><li style="list-style-type:circle">Cost optimization (eliminate secondary data centers)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8024-a269-ccaab7bc88f6" class="bulleted-list"><li style="list-style-type:disc">Use cases<div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80fa-b51d-f27cfaede80b" class="bulleted-list"><li style="list-style-type:circle">Healthcare data protection</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-8005-b4c9-eb41d7a54c8d" class="bulleted-list"><li style="list-style-type:circle">Financial services continuity</li></ul></div><div style="display:contents" dir="auto"><ul id="2dccbafa-d2df-80fd-b002-ce869383ad75" class="bulleted-list"><li style="list-style-type:circle">Manufacturing operations recovery</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2dccbafa-d2df-8094-b9c6-d5f3a7f70259" class="">EBS vs S3</h2></div><div style="display:contents" dir="ltr"><table id="2dccbafa-d2df-8084-8f94-c7f01597c113" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-80ba-b82a-d303dd518e6e"><td id="f&gt;nb" class="" style="width:160px">EBS</td><td id="=Eu:" class="" style="width:160px">S3</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-80a2-81dd-c555adf6f412"><td id="f&gt;nb" class="" style="width:160px">Size up to 16TiB</td><td id="=Eu:" class="" style="width:160px">Unlimited storage</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-80e3-9875-f25949ddac21"><td id="f&gt;nb" class="" style="width:160px">Data persistence</td><td id="=Eu:" class="" style="width:160px">Individual objects up to 5 TB</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-8058-bff9-fbf5bd3246bb"><td id="f&gt;nb" class="" style="width:160px">SSD by default</td><td id="=Eu:" class="" style="width:160px">Write once/ Read many</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-805a-98a5-cd348c1b884b"><td id="f&gt;nb" class="" style="width:160px">Has HDD options</td><td id="=Eu:" class="" style="width:160px">99.999 % durability</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-8010-aca0-dcc330d43e89"><td id="f&gt;nb" class="" style="width:160px">Split large video files in small blocks</td><td id="=Eu:" class="" style="width:160px">Each object has an URL</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-8040-ac46-ca9cc0100576"><td id="f&gt;nb" class="" style="width:160px"></td><td id="=Eu:" class="" style="width:160px">Regionally distributed</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-8097-80d8-f0f5b685d433"><td id="f&gt;nb" class="" style="width:160px"></td><td id="=Eu:" class="" style="width:160px">Offers cost saving</td></tr></div><div style="display:contents" dir="ltr"><tr id="2dccbafa-d2df-80fb-9686-e3bb4167bd22"><td id="f&gt;nb" class="" style="width:160px"></td><td id="=Eu:" class="" style="width:160px">Serverless</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2dccbafa-d2df-806c-85b4-d4a1a793b851" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
